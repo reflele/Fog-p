@@ -3,9 +3,9 @@
     If so, please substitute `startcode` with whatever your project is called.
  */
 
-CREATE DATABASE  IF NOT EXISTS `startcode`;
+CREATE DATABASE  IF NOT EXISTS `fog_carport`;
 
-USE `startcode`;
+USE `fog_carport`;
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
