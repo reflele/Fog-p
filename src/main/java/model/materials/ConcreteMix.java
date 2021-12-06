@@ -1,9 +1,9 @@
 package model.materials;
 
-import model.Material;
+import business.entities.Material;
 
 public class ConcreteMix extends Material {
-    public ConcreteMix(String category, String materialName, String productNumber, double price, int weight) {
-        super(category, materialName, productNumber, price, weight);
+    public ConcreteMix(String category, String materialName, String productNumber, double price) {
+        super(category, productNumber, price);
     }
 }

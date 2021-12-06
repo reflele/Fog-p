@@ -38,148 +38,50 @@
 
         <div style="margin-top: 3em;margin-bottom: 3em;">
 
-            <div>
-                <form action="fc/xxxxxxxx" method="post">
+        <div class="row">
+        <div class="col-md-4"></div>
 
+        <div class="col-md-4">
+
+        <div class="container">
+
+        <%--        <img src="images/olskercupcakes.png" class="img-fluid mb-4"/>--%>
+
+        <div>
+        <div>
+
+            <form action="fc/orderpage" method="post">
+
+                <div style="margin-top: 3em;margin-bottom: 3em;">
+                    <h4>log på for at starte med at designe og bestille din helt egen carport.</h4>
+
+                </div>
 
                 <div class="row">
-                    <div class="col-3 mb-3"></div>
+                    <div class="col-md-4"></div>
 
-                    <div class="col-3">
+                    <div class="col-md-4">
 
-                        <div class="container mb-3">
-
-
-                            <a>Vælg længde</a>
-                            <select class="form-select" aria-label="Default select example">
-                                <c:forEach var="lengths" items="${applicationScope.lengths}">
-                                <option value="length" name="length" class="dropdown-item">
-                                        ${lengths.dimension}
-                                     </option></c:forEach>
-                            </select>
-
-                            </select>
-                            <br>
-                            <a>Vælg højde</a>
-                                    <select class="form-select" aria-label="Default select example">
-                                        <c:forEach var="heights" items="${applicationScope.heights}">
-                                            <option value="height" name="height" class="dropdown-item">
-                                                    ${heights.dimension}
-                                            </option></c:forEach>
-                                    </select>
-                            <br>
-                            <a>Vælg bredde</a>
-                                    <select class="form-select" aria-label="Default select example">
-                                        <c:forEach var="widths" items="${applicationScope.widths}">
-                                            <option value="width" name="width" class="dropdown-item">
-                                                    ${widths.dimension}
-                                            </option></c:forEach>
-                                    </select>
-                            <br>
-                            <a>Vælg Trætype</a>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Open this select menu</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                            <br>
-                            <a>Vælg Beklædning</a>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Open this select menu</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-
+                        <div class="container">
 
                         </div>
                     </div>
-                    <div class="col-3 mb-3">
 
-                        <a>Vælg antal sider</a>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
+                    <a type="button" class="btn btn-primary btn-lg"
+                       href="${pageContext.request.contextPath}/fc/loginpage">Log på</a>
+
+                    <div class="col-md-4">
 
                         <br>
-                        <a>Vælg lakering</a>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-
-                        <br>
-                        <a>Vælg tagtype</a>
-                        <select class="form-select" aria-label="Default select example">
-                            <c:forEach var="roofs" items="${applicationScope.rooftypes}">
-                                <option value="roofs" name="${roofs.id}" class="dropdown-item">
-                                        ${roofs.name}
-                                </option></c:forEach>
-                        </select>
-                        <br><br/>
-
-
-                        <div id="skurvalg">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="skur" id="skur" value="skur">
-                                <label class="form-check-label" for="skur">
-                                    Skur
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="skur" id="intet skur"
-                                       value="intet skur">
-                                <label class="form-check-label" for="intet skur">
-                                    Intet skur
-                                </label>
-                            </div>
-<%--                           <script>--%>
-<%--                           </script>--%>
-<%--                                //                                 function loadDoc() {--%>
-<%--                                //                                      document.getElementById("skurvalg").innerHTML = <h1>asdasdasdas</h1>;--%>
-
-<%--                                //  function loadDoc(){--%>
-<%--                                //     document.getElementById("skurvalg").innerHTML = "dgfhfgh";--%>
-
-<%--                                // lengthdrop = document.createElement()--%>
-
-<%--                                //  document.getElementById("skurvalg").appendChild()--%>
-<%--                                /* When the user clicks on the button,--%>
-<%--                          toggle between hiding and showing the dropdown content */--%>
-<%--                        --%>
-<%--        --%>
-<%-- //                           --%>
-
-<%--                        </div>--%>
-
-<%--                                                        <div id="demo">--%>
-<%--                                                            <h1>The XMLHttpRequest Object</h1>--%>
-<%--                                                            <button type="button" onclick="loadDoc()">Change Content</button>--%>
-<%--                                                        </div>--%>
-
-<%--                                                        <script>--%>
-<%--                                                            function loadDoc() {--%>
-<%--                                                                document.getElementById("demo").innerHTML = 5 + 6;--%>
-<%--                                                            }--%>
-<%--                                                        </script>--%>
-
-
+                        <br/>
                     </div>
-
-
-                    <div class="col-3 mb-3"></div>
-
-
                 </div>
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">Send forespørgsel</button>
-                </div>
-                </form>
+
+
+                Eller <a href="${pageContext.request.contextPath}/fc/registerpage">opret bruger</a>
+
+                <br>
+            </form>
 
 
             <c:if test="${sessionScope.role == 'employee' }">
