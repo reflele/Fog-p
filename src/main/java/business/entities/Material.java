@@ -36,13 +36,17 @@ public class Material {
         this.width = width;
     }
 
-    public Material(String category, String material_id, double price) {
+    public Material(String category, String material_id, double price, String unit) {
         this.category = category;
         this.material_id = material_id;
         this.price = price;
+        this.unit = unit;
     }
 
-
+    public Material(String material_id, String shortDescription) {
+        this.material_id = material_id;
+        this.shortDescription = shortDescription;
+    }
 
     public String getCategory() {
         return category;
