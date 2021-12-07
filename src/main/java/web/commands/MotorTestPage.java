@@ -1,7 +1,7 @@
 package web.commands;
 
 import business.exceptions.UserException;
-import model.Calculate;
+import business.services.Calculate;
 import model.Materials;
 import model.materials.WoodenPost;
 

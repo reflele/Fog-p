@@ -35,7 +35,6 @@ public class Materials {
         }
 
         }
-        ArrayList<ConcreteMix> concreteMix = new ArrayList();
         ArrayList<Glass> glass = new ArrayList();
         ArrayList<Panel> panels = new ArrayList();
         ArrayList<Misc> misc = new ArrayList();

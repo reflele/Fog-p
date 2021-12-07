@@ -102,4 +102,12 @@ public class MaterialMapper {
         }
         return materialList;
     }
+
+//    public Material getMaterialByDescription() {
+//        // TODO skal laves en metode til at få materials ud baseret på deres description
+//
+//
+//
+//
+//    }
 }

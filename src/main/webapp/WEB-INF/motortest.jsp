@@ -23,9 +23,9 @@
             <h2 class="text-center">Motortest siger:</h2>
 
             <h1 class="text-center"> valgte parametre </h1>
-                <h4>${sessionScope.length}</h4>
-                <h4>${sessionScope.width}</h4>
-                <h4>${sessionScope.roof} tag</h4>
+                <h4>længde: ${sessionScope.length}</h4>
+                <h4>bredde: ${sessionScope.width}</h4>
+                <h4>tag:    ${sessionScope.roof}</h4>
             <br><br/>
 
             <h3>overfladeareal
