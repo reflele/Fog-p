@@ -1,4 +1,5 @@
 <%@ page import="model.DataRepo" %>
+<%@ page import="javax.xml.crypto.Data" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -6,11 +7,13 @@
 <%!
     @Override
     public void jspInit() {
-        //her kan jeg skrive initialiseringskode, fx for at befolke datastrukturer, lister etc
         DataRepo.initDataRepo();
+        //her kan jeg skrive initialiseringskode, fx for at befolke datastrukturer, lister etc
+
 //        System.out.println("asdasdasd");
 
 //        ServletContext application = getServletContext();
+
     }
 %>
 

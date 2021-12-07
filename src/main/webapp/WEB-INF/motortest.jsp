@@ -35,11 +35,19 @@
             </h3>
 
             <br>
-            <h3>antal bjælker</h3>
+            <h3>antal stolper</h3>
+            <h4>${sessionScope.woodenPostCount}</h4>
+
             <br>
+            <h3>antal bjælker</h3>
+
+            <br>
+            <h3>antal spær</h3>
+
+            <br>
+
+
             <h1>Antal xxx</h1>
-
-
 
                     <div class="col-md-4"></div>
 
