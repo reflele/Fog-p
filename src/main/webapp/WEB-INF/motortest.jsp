@@ -39,7 +39,8 @@
             <h4>${sessionScope.woodenPostCount}</h4>
 
             <br>
-            <h3>antal bjælker</h3>
+            <h3>antal Rem</h3>
+
 
             <br>
             <h3>antal spær</h3>

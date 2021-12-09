@@ -12,15 +12,30 @@ import java.util.List;
 public class MaterialFacade {
     MaterialMapper materialMapper;
 
-    public MaterialFacade(Database database)
-    {
+    public MaterialFacade(Database database) {
         materialMapper = new MaterialMapper(database);
     }
+
     public List<Material> getAllMaterials;
 
-    public List <Material> getAllMaterials() throws UserException
-    {
+    public List<Material> getAllMaterials() throws UserException {
         return getAllMaterials();
     }
 
+
+
+    public List<Material> getMaterialByCategory(String category) throws UserException {
+        return materialMapper.getMaterialByCategory(category);
+    }
+
+
+//    public Material getMaterialByDescription(String description) throws UserException {
+//
+////        public List<Material> getMaterialByDescription;
+//
+//
+//        return materialMapper.getMaterialByDescription();
+//
+//
+//    }
 }

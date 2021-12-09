@@ -1,6 +1,21 @@
 package model;
 
+import business.entities.Material;
+import business.exceptions.UserException;
+import business.persistence.Database;
+import business.services.MaterialFacade;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Calculate {
+
+     MaterialFacade materialFacade;
+
+    public Calculate(Database database) {
+        materialFacade = new MaterialFacade(database);
+    }
+
 
     static double minLengthWidth = 450; //if carport length < minLength. No extra posts are added.
     static double postsDistance = 210; //if side is longer than minLength, extra posts will be added to the construction for every postsDistance cm.
@@ -10,8 +25,45 @@ public class Calculate {
         return 0;
     }
 
-    public static double beams(double carPortLength, double carPortWidth, double postsCount) {
+    public List<Material> CategoryList(String category) throws UserException {
 
+        List<Material> list = new ArrayList<>();
+
+        list = materialFacade.getMaterialByCategory(category);
+
+        return list;
+    }
+
+    public double beams(double carPortLength, double carPortWidth, double postsCount, Database database) throws UserException {
+
+
+        List<Material> beamsList;
+        beamsList = CategoryList("beam");
+
+        List<Material> raftersList;
+        raftersList = CategoryList("rafter");
+
+        for (int i = 0; i < beamsList.size(); i++) {
+            System.out.println(beamsList.get(i).getMaterial_id());
+        }
+        for (int i = 0; i < raftersList.size(); i++) {
+            System.out.println(raftersList.get(i).getMaterial_id());
+        }
+
+
+        //lav liste med beams
+        //sorter efter længde (mindst til størst)
+        //loop i gennem liste for at finde den mindste beam som er > longSide
+        //tilføj til list som indeholder material_id og antal
+
+
+
+
+
+
+
+        return 3;
+/*
         double shortSide1;
         double shortSide2;
         double longSide3;
@@ -37,37 +89,32 @@ public class Calculate {
         double beamsShortSideCount = 0;
         double beamsLongSideCount = 0;
 
-        if (shortSide1 > minLengthWidth + postsDistance) {
-            beamsShortSideCount = 3;
-        } else if (shortSide1 > minLengthWidth) {
-            beamsShortSideCount = 2;
-        } else if (shortSide1 < minLengthWidth) {
-            beamsShortSideCount = 1;
-        }
+//        if (shortSide1 > minLengthWidth + postsDistance) {
+//            beamsShortSideCount = 3;
+//        } else if (shortSide1 > minLengthWidth) {
+//            beamsShortSideCount = 2;
+//        } else if (shortSide1 < minLengthWidth) {
+//            beamsShortSideCount = 1;
+//        }
 
-       if (longSide3 > minLengthWidth + postsDistance){
-             beamsLongSideCount = 3;
-        } else if (longSide3 > minLengthWidth){
-             beamsLongSideCount = 2;
-        } else if (longSide3 < minLengthWidth){
-             beamsLongSideCount = 1;
-        }
-
-
-       beamDistanceSide1 = shortSide1/beamsShortSideCount;
-       beamDistanceSide3 = longSide3/beamsLongSideCount;
+//       if (longSide3 > minLengthWidth + postsDistance){
+//             beamsLongSideCount = 3;
+//        } else if (longSide3 > minLengthWidth){
+//             beamsLongSideCount = 2;
+//        } else if (longSide3 < minLengthWidth){
+//             beamsLongSideCount = 1;
+//        }
 
 
-       //beregn afstand mellem stolper på hver side
+//       beamDistanceSide1 = shortSide1/beamsShortSideCount;
+//       beamDistanceSide3 = longSide3/beamsLongSideCount;
 
 
 
 
+        */
 
 
-
-
-        return 3;
     }
 
     public static double posts(double carPortLength, double carPortWidth){
@@ -96,4 +143,6 @@ public class Calculate {
         return type;
         //make method der finder ud af type
     }
+
+
 }

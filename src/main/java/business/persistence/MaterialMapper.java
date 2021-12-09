@@ -1,64 +1,6 @@
-
-//package business.persistence;
-//
-//import business.entities.Material;
-//import business.entities.User;
-//import business.exceptions.UserException;
-//
-//import java.sql.Connection;
-//import java.sql.PreparedStatement;
-//import java.sql.ResultSet;
-//import java.sql.SQLException;
-//
-//public class MaterialMapper {
-//
-//        private Database database;
-//
-//        public MaterialMapper(Database database)
-//        {
-//            this.database = database;
-//        }
-//
-//        public Material importAllMaterials(String material_id) throws UserException
-//        {
-//            try (Connection connection = database.connect())
-//            {
-//                String sql = "SELECT materiale_id, length FROM materiale WHERE price=? AND unit=?";
-//
-//                try (PreparedStatement ps = connection.prepareStatement(sql))
-//                {
-//                    ps.setString(1, price);
-//                    ps.setString(2, unit);
-//                    ResultSet rs = ps.executeQuery();
-//                    if (rs.next())
-//                    {
-//                        String role = rs.getString("unit");
-//                        Double price = rs.getDouble("price");
-//          //              User user = new User(email, password, role);
-//                        Material material = new Material(344,"stk");
-//                        material.setId(id);
-//                        return material;
-//                    } else
-//                    {
-//                        throw new UserException("Could not validate user");
-//                    }
-//                }
-//                catch (SQLException ex)
-//                {
-//                    throw new UserException(ex.getMessage());
-//                }
-//            }
-//            catch (SQLException ex)
-//            {
-//                throw new UserException("Connection to database could not be established");
-//            }
-//        }
-//}
-
 package business.persistence;
 
 import business.entities.Material;
-import business.entities.User;
 import business.exceptions.UserException;
 
 import java.sql.Connection;
@@ -88,9 +30,44 @@ public class MaterialMapper {
                         materialList = new ArrayList<>();
                     }
 
-                    String material_id = rs.getString("material_id");
-                    String short_description = rs.getString("short_description");
-                    Material material = new Material(material_id, short_description);
+                    int material_id = rs.getInt("material_id");
+                    String description = rs.getString("description");
+
+                    Material material = new Material(material_id);
+                    materialList.add(material);
+
+                }
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            throw new UserException(ex.getMessage());
+        }
+        return materialList;
+    }
+
+
+    public List<Material> getMaterialByCategory(String category) throws UserException {
+        List<Material> materialList = null;
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT * FROM `material` WHERE `category`=?";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setString(1, category);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    if (materialList == null) {
+                        materialList = new ArrayList<>();
+                    }
+                    int material_id = rs.getInt("material_id");
+                    String description = rs.getString("description");
+  //                  String categoryDB = rs.getString("category");
+                    int length = rs.getInt("length");
+                    int height = rs.getInt("height");
+                    int width = rs.getInt("width");
+                    double price = rs.getDouble("price");
+                    String unit = rs.getString("unit");
+                    Material material = new Material(material_id, description, category, length, height, width, price, unit);
                     materialList.add(material);
 
                 }
