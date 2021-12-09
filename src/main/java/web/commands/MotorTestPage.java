@@ -23,7 +23,7 @@ public class MotorTestPage extends Command {
 
         double shortSide = 0;
         double surfaceAreaSides = 0;
-        int woodenPostCount = 0;
+        int PostsCount = 0;
 
         int carPortHeight = 210;
         double carPortLength = Double.parseDouble(request.getParameter("length"));
@@ -63,7 +63,7 @@ public class MotorTestPage extends Command {
 //        }// til beregning af antal bjælker
 
 
-        woodenPostCount = (int) Calculate.posts(carPortLength,carPortWidth);
+        PostsCount = (int) Calculate.posts(carPortLength,carPortWidth);
 
 
 
@@ -71,7 +71,7 @@ public class MotorTestPage extends Command {
         request.getSession().setAttribute("width",carPortWidth);
         request.getSession().setAttribute("roof",roofType);
         request.getSession().setAttribute("surface",surfaceAreaSides);
-        request.getSession().setAttribute("woodenPostCount",woodenPostCount);
+        request.getSession().setAttribute("woodenPostCount",PostsCount);
 
         return "motortest";
     }

@@ -11,6 +11,14 @@ public class Material {
     private double price;
     private String unit;
 
+    public Material(String material_id, String shortDescription, String category, int length, double price) {
+        this.material_id = material_id;
+        this.shortDescription = shortDescription;
+        this.category = category;
+        this.length = length;
+        this.price = price;
+    }
+
     public Material(String material_id, double price, String unit) {
         this.material_id = material_id;
         this.price = price;
@@ -47,6 +55,7 @@ public class Material {
         this.material_id = material_id;
         this.shortDescription = shortDescription;
     }
+
 
     public String getCategory() {
         return category;
