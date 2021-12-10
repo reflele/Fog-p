@@ -5,12 +5,11 @@ import business.exceptions.UserException;
 import business.persistence.Database;
 import business.services.MaterialFacade;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Calculate {
 
-     MaterialFacade materialFacade;
+    MaterialFacade materialFacade;
 
     public Calculate(Database database) {
         materialFacade = new MaterialFacade(database);
@@ -20,8 +19,8 @@ public class Calculate {
     static double minLengthWidth = 450; //if carport length < minLength. No extra posts are added.
     static double postsDistance = 210; //if side is longer than minLength, extra posts will be added to the construction for every postsDistance cm.
 
-    public static double rafters(){
-    int x = 0;
+    public static double rafters() {
+        int x = 0;
         return 0;
     }
 
@@ -39,27 +38,20 @@ public class Calculate {
 
         List<Material> beamsList;
         beamsList = CategoryList("beam");
-
-        List<Material> raftersList;
-        raftersList = CategoryList("rafter");
-
+        System.out.println("unsorted list by length;");
         for (int i = 0; i < beamsList.size(); i++) {
             System.out.println(beamsList.get(i).getMaterial_id());
         }
-        for (int i = 0; i < raftersList.size(); i++) {
-            System.out.println(raftersList.get(i).getMaterial_id());
-        }
+        System.out.println("sorted list by length");
+
+
+
 
 
         //lav liste med beams
         //sorter efter længde (mindst til størst)
         //loop i gennem liste for at finde den mindste beam som er > longSide
         //tilføj til list som indeholder material_id og antal
-
-
-
-
-
 
 
         return 3;
@@ -117,18 +109,18 @@ public class Calculate {
 
     }
 
-    public static double posts(double carPortLength, double carPortWidth){
+    public static double posts(double carPortLength, double carPortWidth) {
 
         double postsCount = 4;
 
-        if (carPortWidth >= minLengthWidth){
+        if (carPortWidth >= minLengthWidth) {
             double extraWidth = carPortWidth - minLengthWidth;
             for (double i = 0; i < extraWidth; i = i + postsDistance) {
                 postsCount = postsCount + 2;
             }
         }
 
-        if (carPortLength >= minLengthWidth){
+        if (carPortLength >= minLengthWidth) {
             double extraLength = carPortLength - minLengthWidth;
             for (double i = 0; i < extraLength; i = i + postsDistance) {
                 postsCount = postsCount + 2;
@@ -137,7 +129,7 @@ public class Calculate {
         return postsCount;
     }
 
-    public static String postsType(int postCount){
+    public static String postsType(int postCount) {
         String type = "birketræ";
 
         return type;
