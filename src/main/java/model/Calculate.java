@@ -38,20 +38,11 @@ public class Calculate {
         }
 
         List<Material> raftersList;
-        raftersList = CategoryList("rafter"); //gets beams from db
-
-        System.out.println("unsorted");
-        for (int i = 0; i < raftersList.size(); i++) {
-            System.out.println(raftersList.get(i).getLength());
-        }
-
-        raftersList.sort(new SortByLength()); //sorted beamsList by length
+        raftersList = CategoryList("rafter"); //gets rafters from db
 
 
-        System.out.println("now sorted");
-        for (int i = 0; i < raftersList.size(); i++) {
-            System.out.println(raftersList.get(i).getLength());
-        }
+        raftersList.sort(new SortByLength()); //sorted raftersList by length
+
 
         for (int i = 0; i < raftersList.size(); i++) {
             if (raftersList.get(i).getLength() > shortSide) {
@@ -61,8 +52,7 @@ public class Calculate {
             }
 
         }
-
-
+        //tilføj rafters afstand fra hinanden.
 
 
 
