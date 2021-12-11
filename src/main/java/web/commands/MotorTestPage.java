@@ -28,6 +28,8 @@ public class MotorTestPage extends Command {
 //      Materials.initMaterials();
         double shortSide = 0;
         double surfaceAreaSides = 0;
+        double beamsLength = 0;
+        double raftersLength = 0;
         int PostsCount = 0;
         int carPortHeight = 210;
 
@@ -37,20 +39,24 @@ public class MotorTestPage extends Command {
         String roofType = request.getParameter("roof");
 
 
+
+
         if (carPortLength<carPortWidth){
             shortSide = carPortWidth;
         }else shortSide= carPortHeight;
 
 
-//        surfaceAreaSides = (carPortLength*carPortHeight+carPortWidth*carPortHeight+shortSide*carPortHeight);
+ surfaceAreaSides = (carPortLength*carPortHeight+carPortWidth*carPortHeight+shortSide*carPortHeight);
+
 
 
         PostsCount = (int) calculate.posts(carPortLength,carPortWidth);
+        beamsLength = calculate.beams(carPortLength,carPortWidth);
+        raftersLength = calculate.rafters(carPortLength,carPortWidth);
 
-        calculate.beams(carPortLength,carPortWidth, 4,database);
 
-
-
+        request.getSession().setAttribute("raftersLength",raftersLength);
+        request.getSession().setAttribute("beamsLength",beamsLength);
         request.getSession().setAttribute("length",carPortLength);
         request.getSession().setAttribute("width",carPortWidth);
         request.getSession().setAttribute("roof",roofType);

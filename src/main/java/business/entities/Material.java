@@ -13,6 +13,7 @@ public class Material {
     }
 
     public Material(int material_id, String description, String category, int length, int height, int width, double price, String unit) {
+        super();
         this.material_id = material_id;
         this.description = description;
         this.category = category;

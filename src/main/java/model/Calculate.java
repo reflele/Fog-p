@@ -18,10 +18,55 @@ public class Calculate {
 
     static double minLengthWidth = 450; //if carport length < minLength. No extra posts are added.
     static double postsDistance = 210; //if side is longer than minLength, extra posts will be added to the construction for every postsDistance cm.
+    static double raftersDistance = 80;
 
-    public static double rafters() {
-        int x = 0;
-        return 0;
+
+    public double rafters(double carPortLength, double carportWidth) throws UserException {
+
+        double shortSide = 0;
+        double longSide = 0;
+        double raftersLength = 0;
+        double raftersCount = 0;
+        int rafterId = 0;
+
+        if (carPortLength > carportWidth){
+            longSide  = carPortLength;
+            shortSide = carportWidth;
+        } else {
+            longSide  = carportWidth;
+            shortSide = carPortLength;
+        }
+
+        List<Material> raftersList;
+        raftersList = CategoryList("rafter"); //gets beams from db
+
+        System.out.println("unsorted");
+        for (int i = 0; i < raftersList.size(); i++) {
+            System.out.println(raftersList.get(i).getLength());
+        }
+
+        raftersList.sort(new SortByLength()); //sorted beamsList by length
+
+
+        System.out.println("now sorted");
+        for (int i = 0; i < raftersList.size(); i++) {
+            System.out.println(raftersList.get(i).getLength());
+        }
+
+        for (int i = 0; i < raftersList.size(); i++) {
+            if (raftersList.get(i).getLength() > shortSide) {
+                raftersLength = raftersList.get(i).getLength();
+                rafterId = raftersList.get(i).getMaterial_id();
+                break;
+            }
+
+        }
+
+
+
+
+
+        return raftersLength;
     }
 
     public List<Material> CategoryList(String category) throws UserException {
@@ -33,29 +78,9 @@ public class Calculate {
         return list;
     }
 
-    public double beams(double carPortLength, double carPortWidth, double postsCount, Database database) throws UserException {
+    public double beams(double carPortLength, double carPortWidth) throws UserException {
 
 
-        List<Material> beamsList;
-        beamsList = CategoryList("beam");
-        System.out.println("unsorted list by length;");
-        for (int i = 0; i < beamsList.size(); i++) {
-            System.out.println(beamsList.get(i).getMaterial_id());
-        }
-        System.out.println("sorted list by length");
-
-
-
-
-
-        //lav liste med beams
-        //sorter efter længde (mindst til størst)
-        //loop i gennem liste for at finde den mindste beam som er > longSide
-        //tilføj til list som indeholder material_id og antal
-
-
-        return 3;
-/*
         double shortSide1;
         double shortSide2;
         double longSide3;
@@ -78,24 +103,25 @@ public class Calculate {
             longSide4 = carPortWidth;
         }
 
+
         double beamsShortSideCount = 0;
         double beamsLongSideCount = 0;
 
-//        if (shortSide1 > minLengthWidth + postsDistance) {
-//            beamsShortSideCount = 3;
-//        } else if (shortSide1 > minLengthWidth) {
-//            beamsShortSideCount = 2;
-//        } else if (shortSide1 < minLengthWidth) {
-//            beamsShortSideCount = 1;
-//        }
+        if (shortSide1 > minLengthWidth + postsDistance) {
+            beamsShortSideCount = 3;
+        } else if (shortSide1 > minLengthWidth) {
+            beamsShortSideCount = 2;
+        } else if (shortSide1 < minLengthWidth) {
+            beamsShortSideCount = 1;
+        }
 
-//       if (longSide3 > minLengthWidth + postsDistance){
-//             beamsLongSideCount = 3;
-//        } else if (longSide3 > minLengthWidth){
-//             beamsLongSideCount = 2;
-//        } else if (longSide3 < minLengthWidth){
-//             beamsLongSideCount = 1;
-//        }
+       if (longSide3 > minLengthWidth + postsDistance){
+             beamsLongSideCount = 3;
+        } else if (longSide3 > minLengthWidth){
+             beamsLongSideCount = 2;
+        } else if (longSide3 < minLengthWidth){
+             beamsLongSideCount = 1;
+        }
 
 
 //       beamDistanceSide1 = shortSide1/beamsShortSideCount;
@@ -104,7 +130,69 @@ public class Calculate {
 
 
 
-        */
+
+        List<Material> beamsList;
+        beamsList = CategoryList("beam"); //gets beams from db
+
+
+        beamsList.sort(new SortByLength()); //sorted beamsList by length
+
+        double longSide = 0;
+
+        if (carPortLength>carPortWidth){
+            longSide = carPortLength;
+        } else {
+            longSide = carPortWidth;
+        }
+
+        double beamLength = 0;
+        int remsRequiredCount = 0;
+        int beamId;
+
+        for (int i = 0; i < beamsList.size(); i++) {
+            if (beamsList.get(i).getLength() > longSide) {
+                beamLength = beamsList.get(i).getLength();
+                beamId = beamsList.get(i).getMaterial_id();
+                remsRequiredCount = 2;
+                break;
+            }
+
+        }
+
+            if (remsRequiredCount == 0){
+
+                for (int i = 0; i < beamsList.size(); i++) {
+                    if (beamsList.get(i).getLength() > longSide/2) {
+                        beamLength = beamsList.get(i).getLength();
+                        beamId = beamsList.get(i).getMaterial_id();
+                        remsRequiredCount = 4;
+                        break;
+                    }
+                    }
+            }
+
+
+
+
+
+
+
+
+
+        return beamLength;
+
+
+
+
+
+
+
+
+            //lav liste med beams
+            //sorter efter længde (mindst til størst)
+            //loop i gennem liste for at finde den mindste beam som er > longSide
+            //tilføj til list som indeholder material_id og antal
+
 
 
     }
@@ -126,6 +214,7 @@ public class Calculate {
                 postsCount = postsCount + 2;
             }
         }
+        //add to a list
         return postsCount;
     }
 
