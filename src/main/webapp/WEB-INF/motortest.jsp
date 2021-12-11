@@ -25,7 +25,7 @@
             <h1 class="text-center"> valgte parametre </h1>
                 <h4>længde: ${sessionScope.length}</h4>
                 <h4>bredde: ${sessionScope.width}</h4>
-                <h4>tag:    ${sessionScope.roof}</h4>
+                <h4>type: ${sessionScope.roof} tag</h4>
             <br><br/>
 
             <h3>overfladeareal
@@ -39,10 +39,12 @@
             <h4>${sessionScope.woodenPostCount}</h4>
 
             <br>
-            <h3>antal bjælker</h3>
+            <h3>Rem længde</h3>
+            <h4>${sessionScope.beamsLength} cm</h4>
 
             <br>
-            <h3>antal spær</h3>
+            <h3>spærlængde</h3>
+            <h4>${sessionScope.raftersLength} cm</h4>
 
             <br>
 

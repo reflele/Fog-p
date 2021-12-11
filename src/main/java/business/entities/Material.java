@@ -3,9 +3,29 @@ package business.entities;
 import java.util.List;
 
 public class Material {
-    private String material_id;
-    private String shortDescription;
+    private int material_id;
     private String description;
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public Material(int material_id, String description, String category, int length, int height, int width, double price, String unit) {
+        super();
+        this.material_id = material_id;
+        this.description = description;
+        this.category = category;
+        this.length = length;
+        this.height = height;
+        this.width = width;
+        this.price = price;
+        this.unit = unit;
+    }
+
     private String category; //e.g. træstolpe, glastag, skrue, søm etc
     private int length;
     private int height;
@@ -13,13 +33,20 @@ public class Material {
     private double price;
     private String unit;
 
-    public Material(String material_id, double price, String unit) {
+    public Material(int material_id, String category, int length, double price) {
+        this.material_id = material_id;
+        this.category = category;
+        this.length = length;
+        this.price = price;
+    }
+
+    public Material(int material_id, double price, String unit) {
         this.material_id = material_id;
         this.price = price;
         this.unit = unit;
     }
 
-    public Material(String category, String material_id, double price, int length, int width) {
+    public Material(String category, int material_id, double price, int length, int width) {
         this.category = category;
         this.material_id = material_id;
         this.price = price;
@@ -27,28 +54,32 @@ public class Material {
         this.width = width;
     }
 
-    public Material(String category, String material_id, String description, String shortDescription, double price, int length, int height, int width) {
+    public Material(String category, int material_id, String description, double price, int length, int height, int width) {
         this.category = category;
         this.material_id = material_id;
         this.description = description;
-        this.shortDescription = shortDescription;
         this.price = price;
         this.length = length;
         this.height = height;
         this.width = width;
     }
 
-    public Material(String category, String material_id, double price, String unit) {
+    public Material(String category, int material_id, double price, String unit) {
         this.category = category;
         this.material_id = material_id;
         this.price = price;
         this.unit = unit;
     }
 
-    public Material(String material_id, String shortDescription) {
+    public Material(int material_id, double price) {
         this.material_id = material_id;
-        this.shortDescription = shortDescription;
+        this.price = price;
     }
+
+    public Material(int material_id) {
+        this.material_id = material_id;
+    }
+
 
     public String getCategory() {
         return category;
@@ -60,11 +91,11 @@ public class Material {
         this.category = category;
     }
 
-    public String getMaterial_id() {
+    public int getMaterial_id() {
         return material_id;
     }
 
-    public void setMaterial_id(String material_id) {
+    public void setMaterial_id(int material_id) {
         this.material_id = material_id;
     }
 
@@ -74,14 +105,6 @@ public class Material {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getShortDescription() {
-        return shortDescription;
-    }
-
-    public void setShortDescription(String shortDescription) {
-        this.shortDescription = shortDescription;
     }
 
     public double getPrice() {
