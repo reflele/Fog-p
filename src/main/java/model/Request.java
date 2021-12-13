@@ -2,10 +2,11 @@ package model;
 
 public class Request {
     private int id; // just used to demo retrieval of autogen keys in UserMapper
-    int requestId;
+    int user_id;
     int length;
     int width;
     String roofType;
+
 
     public int getId() {
         return id;
@@ -39,16 +40,16 @@ public class Request {
         this.roofType = roofType;
     }
 
-    public int getRequestId() {
-        return requestId;
+    public int getUser_id() {
+        return user_id;
     }
 
-    public void setRequestId(int requestId) {
-        this.requestId = requestId;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     public Request(int id, int length, int width, String roofType) {
-        this.requestId = id;
+        this.user_id = id;
         this.length = length;
         this.width = width;
         this.roofType = roofType;

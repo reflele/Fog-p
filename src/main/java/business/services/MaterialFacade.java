@@ -22,20 +22,7 @@ public class MaterialFacade {
         return getAllMaterials();
     }
 
-
-
     public List<Material> getMaterialByCategory(String category) throws UserException {
         return materialMapper.getMaterialByCategory(category);
     }
-
-
-//    public Material getMaterialByDescription(String description) throws UserException {
-//
-////        public List<Material> getMaterialByDescription;
-//
-//
-//        return materialMapper.getMaterialByDescription();
-//
-//
-//    }
 }

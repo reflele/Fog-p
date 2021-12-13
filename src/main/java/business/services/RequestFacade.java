@@ -17,9 +17,9 @@ public class RequestFacade
     }
 
 
-    public Request createRequest(int req_id, int length, int width, String roofType) throws UserException
+    public Request createRequest(int user_id, int length, int width, String roofType) throws UserException
     {
-        Request request = new Request(req_id,length,width,roofType);
+        Request request = new Request(user_id,length,width,roofType);
 
         requestMapper.createRequest(request);
 
