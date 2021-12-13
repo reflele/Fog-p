@@ -37,6 +37,7 @@ public class MotorTestPage extends Command {
         double raftersLength = 0;
         int PostsCount = 0;
         int carPortHeight = 210;
+        double amountOfSheets = 0;
 
 
 
@@ -72,6 +73,7 @@ public class MotorTestPage extends Command {
         PostsCount = (int) calculate.posts(carPortLength,carPortWidth);
         beamsLength = calculate.beams(carPortLength,carPortWidth);
         raftersLength = calculate.rafters(carPortLength,carPortWidth);
+        amountOfSheets = calculate.roofing(carPortLength, carPortWidth);
 
 
 
@@ -82,6 +84,7 @@ public class MotorTestPage extends Command {
         request.getSession().setAttribute("length",carPortLength);
         request.getSession().setAttribute("width",carPortWidth);
         request.getSession().setAttribute("roof",roofType);
+        request.getSession().setAttribute("amountOfSheets", amountOfSheets);
         request.getSession().setAttribute("surface",surfaceAreaSides);
         request.getSession().setAttribute("woodenPostCount",PostsCount);
 
