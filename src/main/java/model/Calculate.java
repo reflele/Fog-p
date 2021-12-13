@@ -213,17 +213,18 @@ public class Calculate {
 
     public static double roofing(double carPortLength, double carPortWidth) {
 
+        int roofSheetId;
         double roofSheetlength = 200;
         double roofSheetWidth = 220;
         double roofSheetSurface = roofSheetlength * roofSheetWidth;
         double carportRoofSurface = carPortLength * carPortWidth;
         double amountOfSheets = 0;
 
-        while (carportRoofSurface>= roofSheetSurface) {
+        while (carportRoofSurface >= roofSheetSurface) {
             roofSheetSurface++;
         }
-        //44000 = roofSheetSurface(200*220)
-        amountOfSheets = roofSheetSurface/44000;
+
+        amountOfSheets = roofSheetSurface / (roofSheetlength * roofSheetWidth);
 
         //runder altid op til nærmeste hel-tal
         return Math.ceil(amountOfSheets);
