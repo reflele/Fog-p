@@ -15,6 +15,8 @@ public class RequestMapper
     }
 
 
+
+
     public void createRequest(Request request) throws UserException
     {
         try (Connection connection = database.connect())
@@ -23,7 +25,7 @@ public class RequestMapper
 
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
             {
-                ps.setInt(1, request.getRequestId());
+                ps.setInt(1, request.getUser_id());
                 ps.setInt(2, request.getLength());
                 ps.setInt(3, request.getWidth());
                 ps.setString(4, request.getRoofType());
@@ -31,7 +33,7 @@ public class RequestMapper
                 ResultSet ids = ps.getGeneratedKeys();
                 ids.next();
                 int id = ids.getInt(1);
-                request.setRequestId(id);
+                request.setUser_id(id);
             }
             catch (SQLException ex)
             {

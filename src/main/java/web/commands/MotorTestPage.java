@@ -1,8 +1,10 @@
 package web.commands;
 
 import business.entities.Material;
+import business.entities.User;
 import business.exceptions.UserException;
 import business.services.RequestFacade;
+import business.services.UserFacade;
 import model.Calculate;
 import model.Materials;
 import model.Request;
@@ -10,6 +12,7 @@ import model.materials.WoodenPost;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.jsp.PageContext;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,9 +52,14 @@ public class MotorTestPage extends Command {
 
         RequestFacade requestFacade = new RequestFacade(database);
 
-        requestFacade.createRequest(1,65,88,roofType);
+        requestFacade.createRequest(1,(int) carPortLength,(int) carPortWidth,roofType);
 
-''
+        System.out.println("id:");
+        System.out.println(request.getSession().getId());
+        System.out.println("attributenames:");
+
+
+
         if (carPortLength<carPortWidth){
             shortSide = carPortWidth;
         }else shortSide= carPortHeight;
@@ -64,6 +72,8 @@ public class MotorTestPage extends Command {
         PostsCount = (int) calculate.posts(carPortLength,carPortWidth);
         beamsLength = calculate.beams(carPortLength,carPortWidth);
         raftersLength = calculate.rafters(carPortLength,carPortWidth);
+
+
 
 
 

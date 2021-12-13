@@ -18,7 +18,9 @@ public class Calculate {
 
     static double minLengthWidth = 450; //if carport length < minLength. No extra posts are added.
     static double postsDistance = 210; //if side is longer than minLength, extra posts will be added to the construction for every postsDistance cm.
-    static double raftersDistance = 80;
+    static double raftersDistance = 55;
+
+
 
 
     public double rafters(double carPortLength, double carportWidth) throws UserException {
@@ -52,6 +54,12 @@ public class Calculate {
             }
 
         }
+
+        raftersCount = longSide/raftersDistance;
+
+        System.out.println("rafterscount:");
+        System.out.println(raftersCount);
+
         //tilføj rafters afstand fra hinanden.
 
 
@@ -136,29 +144,34 @@ public class Calculate {
         }
 
         double beamLength = 0;
-        int remsRequiredCount = 0;
-        int beamId;
+        int beamRequiredCount = 0;
+        int beamId = 0;
 
         for (int i = 0; i < beamsList.size(); i++) {
             if (beamsList.get(i).getLength() > longSide) {
                 beamLength = beamsList.get(i).getLength();
                 beamId = beamsList.get(i).getMaterial_id();
-                remsRequiredCount = 2;
+                beamRequiredCount = 2;
                 break;
             }
 
         }
+        System.out.println(beamId);
 
-            if (remsRequiredCount == 0){
+            if (beamRequiredCount == 0){
 
                 for (int i = 0; i < beamsList.size(); i++) {
                     if (beamsList.get(i).getLength() > longSide/2) {
                         beamLength = beamsList.get(i).getLength();
                         beamId = beamsList.get(i).getMaterial_id();
-                        remsRequiredCount = 4;
+                        beamRequiredCount = 4;
+
                         break;
+
                     }
+
                     }
+
             }
 
 
@@ -188,6 +201,8 @@ public class Calculate {
     }
 
     public static double posts(double carPortLength, double carPortWidth) {
+
+        //getDimensionsFromReqId(reqid);
 
         double postsCount = 4;
 
