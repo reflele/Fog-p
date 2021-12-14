@@ -19,6 +19,7 @@ public class DataRepo {
         return roofTypes;
     }
 
+
     public static void initDataRepo() {
 
         if(roofTypes == null){

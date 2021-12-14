@@ -1,9 +1,12 @@
 package business.persistence;
 
+import business.entities.Material;
 import business.exceptions.UserException;
 import model.Request;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RequestMapper
 {
@@ -13,6 +16,40 @@ public class RequestMapper
     {
         this.database = database;
     }
+
+
+    public List<Request> getRequestById(int id) throws UserException {
+        List<Request> requestList = null;
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT * FROM `carport_request` WHERE `user_id`=?";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, id);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    if (requestList == null) {
+                        requestList = new ArrayList<>();
+                    }
+
+                    int requestId = rs.getInt("request_id");
+                    int user_id = rs.getInt("user_id");
+                    int length = rs.getInt("length");
+                    int height = rs.getInt("height");
+                    int width = rs.getInt("width");
+                    String roofType = rs.getString("roofType");
+                    Request request = new Request(requestId, user_id, length, width, height, roofType);
+                    requestList.add(request);
+
+                }
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            throw new UserException(ex.getMessage());
+        }
+        return requestList;
+    }
+
 
 
 

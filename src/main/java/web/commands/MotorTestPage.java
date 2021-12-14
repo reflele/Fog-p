@@ -12,22 +12,42 @@ import model.materials.WoodenPost;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.PageContext;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MotorTestPage extends Command {
     public String pageToShow;
+    public int userId;
+    public String role;
 
     public MotorTestPage(String pageToShow)
     {
-
+        this.userId = userId;
+        this.role = role;
         this.pageToShow = pageToShow;
 
     }
 
+    public int getId(){
+
+        return userId;
+
+    }
+    public String getRole()
+    {
+        return role;
+    }
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
+
+
+
+  //      String roleFromCommand = CommandProtectedPage.getRole();
+
+
 
         Calculate calculate = new Calculate(database);
 //      Materials.initMaterials();
@@ -53,12 +73,8 @@ public class MotorTestPage extends Command {
 
         RequestFacade requestFacade = new RequestFacade(database);
 
-        requestFacade.createRequest(1,(int) carPortLength,(int) carPortWidth,roofType);
-
-        System.out.println("id:");
-        System.out.println(request.getSession().getId());
-        System.out.println("attributenames:");
-
+        HttpSession session = request.getSession();
+        requestFacade.createRequest((int) session.getAttribute("userId"),(int) carPortLength,(int) carPortWidth,roofType);
 
 
         if (carPortLength<carPortWidth){

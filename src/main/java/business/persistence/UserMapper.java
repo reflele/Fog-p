@@ -1,9 +1,12 @@
 package business.persistence;
 
+import business.entities.Material;
 import business.exceptions.UserException;
 import business.entities.User;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserMapper
 {
@@ -14,7 +17,38 @@ public class UserMapper
         this.database = database;
     }
 
-
+//    public List<Material> getUserId() throws UserException {
+//        List<Material> materialList = null;
+//        try (Connection connection = database.connect()) {
+//            String sql = "SELECT * FROM `users` WHERE `id`=?";
+//
+//            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+//                ps.setString(1, category);
+//                ResultSet rs = ps.executeQuery();
+//                while (rs.next()) {
+//                    if (materialList == null) {
+//                        materialList = new ArrayList<>();
+//                    }
+//                    int material_id = rs.getInt("material_id");
+//                    String description = rs.getString("description");
+//                    //                  String categoryDB = rs.getString("category");
+//                    int length = rs.getInt("length");
+//                    int height = rs.getInt("height");
+//                    int width = rs.getInt("width");
+//                    double price = rs.getDouble("price");
+//                    String unit = rs.getString("unit");
+//                    Material material = new Material(material_id, description, category, length, height, width, price, unit);
+//                    materialList.add(material);
+//
+//                }
+//            } catch (SQLException ex) {
+//                throw new UserException(ex.getMessage());
+//            }
+//        } catch (SQLException ex) {
+//            throw new UserException(ex.getMessage());
+//        }
+//        return materialList;
+//    } ASD as
 
     public User login(String email, String password) throws UserException
     {
