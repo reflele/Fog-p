@@ -43,17 +43,22 @@
                 </tr>
                 <tbody>
                 <tr>
-<%--                    <c:if test=""--%>
+                    <c:if test="${sessionScope.requestsList == null}">
+                    <h1 class="text-center"> Du har ikke sendt nogen forespørgsler</h1>
+                        </c:if>
+                        <c:if test="${sessionScope.requestsList != null}">
+
                     <c:forEach var="reqlist" items="${sessionScope.requestsList}">
                 <tr>
                     <td>${reqlist.id}</td>
                     <td> ${reqlist.length}</td>
                     <td>${reqlist.width}</td>
                     <td> 210</td>
-                    <td> dd/mm</td>
-                    <td> completed</td>
+                    <td> ${reqlist.dateTime}</td>
+                    <td> Afventer godkendelse</td>
                 </tr>
                 </c:forEach>
+                </c:if>
 
                 </tr>
                 </tbody>

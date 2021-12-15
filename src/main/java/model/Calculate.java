@@ -204,16 +204,10 @@ public class Calculate {
         return postsCount;
     }
 
-    public static String postsType(int postCount) {
-        String type = "birketræ";
-
-        return type;
-        //make method der finder ud af type
-    }
 
     public static double roofing(double carPortLength, double carPortWidth) {
 
-        int roofSheetId;
+        int roofSheetId = 666;
         double roofSheetlength = 200;
         double roofSheetWidth = 220;
         double roofSheetSurface = roofSheetlength * roofSheetWidth;
@@ -226,7 +220,7 @@ public class Calculate {
 
         amountOfSheets = roofSheetSurface / (roofSheetlength * roofSheetWidth);
 
-        //runder altid op til nærmeste hel-tal
+        //runder altid op til nærmeste hele tal
         return Math.ceil(amountOfSheets);
     }
 
