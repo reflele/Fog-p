@@ -6,6 +6,34 @@ public class Request {
     int length;
     int width;
     String roofType;
+    String dateTime;
+
+    public String getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public Request(int id, int user_id, int length, int width, String roofType, String dateTime, int height) {
+        this.id = id;
+        this.user_id = user_id;
+        this.length = length;
+        this.width = width;
+        this.roofType = roofType;
+        this.dateTime = dateTime;
+        this.height = height;
+    }
+
     int height;
 
     public Request(int id, int user_id, int length, int width,int height, String roofType) {

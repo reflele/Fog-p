@@ -25,18 +25,11 @@ public class CommandAllOrders extends Command {
 
        int id = (int) session.getAttribute("userId");
 
+
        List<Request> requestsList = requestFacade.getRequestById(id);
 
 
-
-
-
-
-
-
-        request.getSession().setAttribute("requestsList",requestsList);
-
-
+     request.getSession().setAttribute("requestsList",requestsList);
 
             return "showallorders";
     }

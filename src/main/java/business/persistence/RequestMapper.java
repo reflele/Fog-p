@@ -37,7 +37,8 @@ public class RequestMapper
                     int height = rs.getInt("height");
                     int width = rs.getInt("width");
                     String roofType = rs.getString("roofType");
-                    Request request = new Request(requestId, user_id, length, width, height, roofType);
+                    String dateTime = rs.getString("date_time");
+                    Request request = new Request(requestId, user_id, length, width, roofType, dateTime, height);
                     requestList.add(request);
 
                 }

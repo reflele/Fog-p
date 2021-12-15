@@ -31,11 +31,20 @@
     </div>
     <nav class="my-2 my-md-0 me-md-3">
         <c:if test="${addHomeLink == null }">
+            <c:if test="${sessionScope.role == null}">
             <a class="p-2 text-dark" href="<%=request.getContextPath()%>">Home</a>
         </c:if>
-        <a class="p-2 text-dark" href="#">Orders</a>
-        <a class="p-2 text-dark" href="#">Profile</a>
-        <a class="p-2 text-dark" href="#">About</a>
+        </c:if>
+<%--            <a class="p-2 text-dark" href="<%=request.getContextPath()%>">Home</a>--%>
+
+        <c:if test="${sessionScope.role == 'customer'}">
+        <a class="p-2 text-dark" href="customerpage">Home</a>
+        </c:if>
+        <c:if test="${sessionScope.role == 'employee'}">
+            <a class="p-2 text-dark" href="employeepage">Home</a>
+        </c:if>
+<%--        <a class="p-2 text-dark" href="#">Profile</a>--%>
+<%--        <a class="p-2 text-dark" href="#">About</a>--%>
     </nav>
 
     <div>
