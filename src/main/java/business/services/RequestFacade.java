@@ -1,11 +1,14 @@
 package business.services;
 
+import business.entities.Material;
 import business.entities.User;
 import business.exceptions.UserException;
 import business.persistence.Database;
 import business.persistence.RequestMapper;
 import business.persistence.UserMapper;
 import model.Request;
+
+import java.util.List;
 
 public class RequestFacade
 {
@@ -16,6 +19,11 @@ public class RequestFacade
         requestMapper = new RequestMapper(database);
     }
 
+
+
+public List<Request> getRequestById (int id) throws UserException{
+    return requestMapper.getRequestById(id);
+}
 
     public Request createRequest(int user_id, int length, int width, String roofType) throws UserException
     {

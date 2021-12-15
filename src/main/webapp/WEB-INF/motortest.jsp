@@ -47,6 +47,8 @@
             <h4>${sessionScope.raftersLength} cm</h4>
 
             <br>
+            <h3>roofing</h3>
+            <h4>${sessionScope.amountOfSheets} sheets</h4>
 
 
             <h1>Antal xxx</h1>
@@ -72,6 +74,12 @@
             <p style="font-size: larger">This is what you can do, since your
                 are logged in as a customer</p>
             <p><a href="fc/customerpage">Customer Page</a>
+            </p>
+
+            <br>
+
+            <p><a href="fc/orderpage">back</a>
+            </p>
                 </c:if>
 
         </div>

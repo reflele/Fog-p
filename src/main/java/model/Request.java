@@ -6,7 +6,16 @@ public class Request {
     int length;
     int width;
     String roofType;
+    int height;
 
+    public Request(int id, int user_id, int length, int width,int height, String roofType) {
+        this.id = id;
+        this.user_id = user_id;
+        this.length = length;
+        this.width = width;
+        this.roofType = roofType;
+        this.height = height;
+    }
 
     public int getId() {
         return id;

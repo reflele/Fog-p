@@ -33,6 +33,7 @@ public class AuthorizationFilter implements Filter
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
 
+
         String servletPath = req.getServletPath();
         if (servletPath != null && servletPath.equals("/fc"))
         {

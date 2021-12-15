@@ -21,8 +21,6 @@ public class Calculate {
     static double raftersDistance = 55;
 
 
-
-
     public double rafters(double carPortLength, double carportWidth) throws UserException {
 
         double shortSide = 0;
@@ -31,11 +29,11 @@ public class Calculate {
         double raftersCount = 0;
         int rafterId = 0;
 
-        if (carPortLength > carportWidth){
-            longSide  = carPortLength;
+        if (carPortLength > carportWidth) {
+            longSide = carPortLength;
             shortSide = carportWidth;
         } else {
-            longSide  = carportWidth;
+            longSide = carportWidth;
             shortSide = carPortLength;
         }
 
@@ -55,13 +53,13 @@ public class Calculate {
 
         }
 
-        raftersCount = longSide/raftersDistance;
+        raftersCount = longSide / raftersDistance;
 
         System.out.println("rafterscount:");
         System.out.println(raftersCount);
 
-        //tilføj rafters afstand fra hinanden.
 
+        //tilføj rafters afstand fra hinanden.
 
 
         return raftersLength;
@@ -113,20 +111,17 @@ public class Calculate {
             beamsShortSideCount = 1;
         }
 
-       if (longSide3 > minLengthWidth + postsDistance){
-             beamsLongSideCount = 3;
-        } else if (longSide3 > minLengthWidth){
-             beamsLongSideCount = 2;
-        } else if (longSide3 < minLengthWidth){
-             beamsLongSideCount = 1;
+        if (longSide3 > minLengthWidth + postsDistance) {
+            beamsLongSideCount = 3;
+        } else if (longSide3 > minLengthWidth) {
+            beamsLongSideCount = 2;
+        } else if (longSide3 < minLengthWidth) {
+            beamsLongSideCount = 1;
         }
 
 
 //       beamDistanceSide1 = shortSide1/beamsShortSideCount;
 //       beamDistanceSide3 = longSide3/beamsLongSideCount;
-
-
-
 
 
         List<Material> beamsList;
@@ -137,7 +132,7 @@ public class Calculate {
 
         double longSide = 0;
 
-        if (carPortLength>carPortWidth){
+        if (carPortLength > carPortWidth) {
             longSide = carPortLength;
         } else {
             longSide = carPortWidth;
@@ -158,51 +153,37 @@ public class Calculate {
         }
         System.out.println(beamId);
 
-            if (beamRequiredCount == 0){
+        if (beamRequiredCount == 0) {
 
-                for (int i = 0; i < beamsList.size(); i++) {
-                    if (beamsList.get(i).getLength() > longSide/2) {
-                        beamLength = beamsList.get(i).getLength();
-                        beamId = beamsList.get(i).getMaterial_id();
-                        beamRequiredCount = 4;
+            for (int i = 0; i < beamsList.size(); i++) {
+                if (beamsList.get(i).getLength() > longSide / 2) {
+                    beamLength = beamsList.get(i).getLength();
+                    beamId = beamsList.get(i).getMaterial_id();
+                    beamRequiredCount = 4;
 
-                        break;
+                    break;
 
-                    }
-
-                    }
+                }
 
             }
 
-
-
-
-
-
-
+        }
 
 
         return beamLength;
 
 
-
-
-
-
-
-
-            //lav liste med beams
-            //sorter efter længde (mindst til størst)
-            //loop i gennem liste for at finde den mindste beam som er > longSide
-            //tilføj til list som indeholder material_id og antal
-
+        //lav liste med beams
+        //sorter efter længde (mindst til størst)
+        //loop i gennem liste for at finde den mindste beam som er > longSide
+        //tilføj til list som indeholder material_id og antal
 
 
     }
 
     public static double posts(double carPortLength, double carPortWidth) {
 
-        //getDimensionsFromReqId(reqid);
+        //getDimensionsFromReqId(reqId);
 
         double postsCount = 4;
 
@@ -230,5 +211,26 @@ public class Calculate {
         //make method der finder ud af type
     }
 
+    public static double roofing(double carPortLength, double carPortWidth) {
+
+        int roofSheetId;
+        double roofSheetlength = 200;
+        double roofSheetWidth = 220;
+        double roofSheetSurface = roofSheetlength * roofSheetWidth;
+        double carportRoofSurface = carPortLength * carPortWidth;
+        double amountOfSheets = 0;
+
+        while (carportRoofSurface >= roofSheetSurface) {
+            roofSheetSurface++;
+        }
+
+        amountOfSheets = roofSheetSurface / (roofSheetlength * roofSheetWidth);
+
+        //runder altid op til nærmeste hel-tal
+        return Math.ceil(amountOfSheets);
+    }
 
 }
+
+
+

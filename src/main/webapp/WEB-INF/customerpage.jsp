@@ -20,7 +20,7 @@
         <button type="submit" class="btn btn-primary btn-lg btn-block">Tilføj ny ordre</button>
     </form>
     <br><br/>
-            <form action="fc/xxxxxxxx" method="post">
+            <form action="showallorders" method="post">
                 <button type="submit" class="btn btn-primary btn-lg btn-block">Se ordrer</button>
         </form>
 
