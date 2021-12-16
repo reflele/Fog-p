@@ -15,7 +15,6 @@ public class Calculate {
         materialFacade = new MaterialFacade(database);
     }
 
-
     static double minLengthWidth = 450; //if carport length < minLength. No extra posts are added.
     static double postsDistance = 210; //if side is longer than minLength, extra posts will be added to the construction for every postsDistance cm.
     static double raftersDistance = 55;
@@ -53,13 +52,14 @@ public class Calculate {
 
         }
 
-        raftersCount = longSide / raftersDistance;
+        raftersCount = (longSide / raftersDistance); //vi skal enten +1 eller -1 baseret på om der skal være rafters på ydersiderne
+
+        //raftersCount skal rundes op
+
 
         System.out.println("rafterscount:");
         System.out.println(raftersCount);
 
-
-        //tilføj rafters afstand fra hinanden.
 
 
         return raftersLength;
@@ -75,53 +75,6 @@ public class Calculate {
     }
 
     public double beams(double carPortLength, double carPortWidth) throws UserException {
-
-
-        double shortSide1;
-        double shortSide2;
-        double longSide3;
-        double longSide4;
-
-        double beamDistanceSide1 = 0;
-        double beamDistanceSide2 = 0;
-        double beamDistanceSide3 = 0;
-        double beamDistanceSide4 = 0;
-
-        if (carPortLength > carPortWidth) {
-            shortSide1 = carPortWidth;
-            shortSide2 = carPortWidth;
-            longSide3 = carPortLength;
-            longSide4 = carPortLength;
-        } else {
-            shortSide1 = carPortLength;
-            shortSide2 = carPortLength;
-            longSide3 = carPortWidth;
-            longSide4 = carPortWidth;
-        }
-
-
-        double beamsShortSideCount = 0;
-        double beamsLongSideCount = 0;
-
-        if (shortSide1 > minLengthWidth + postsDistance) {
-            beamsShortSideCount = 3;
-        } else if (shortSide1 > minLengthWidth) {
-            beamsShortSideCount = 2;
-        } else if (shortSide1 < minLengthWidth) {
-            beamsShortSideCount = 1;
-        }
-
-        if (longSide3 > minLengthWidth + postsDistance) {
-            beamsLongSideCount = 3;
-        } else if (longSide3 > minLengthWidth) {
-            beamsLongSideCount = 2;
-        } else if (longSide3 < minLengthWidth) {
-            beamsLongSideCount = 1;
-        }
-
-
-//       beamDistanceSide1 = shortSide1/beamsShortSideCount;
-//       beamDistanceSide3 = longSide3/beamsLongSideCount;
 
 
         List<Material> beamsList;

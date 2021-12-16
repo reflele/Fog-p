@@ -1,18 +1,22 @@
 package model;
 
+import java.sql.Time;
+import java.sql.Timestamp;
+
 public class Request {
     private int id; // just used to demo retrieval of autogen keys in UserMapper
     int user_id;
     int length;
     int width;
     String roofType;
-    String dateTime;
+    Timestamp dateTime;
 
-    public String getDateTime() {
+
+    public Timestamp getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(String dateTime) {
+    public void setDateTime(Timestamp dateTime) {
         this.dateTime = dateTime;
     }
 
@@ -24,7 +28,7 @@ public class Request {
         this.height = height;
     }
 
-    public Request(int id, int user_id, int length, int width, String roofType, String dateTime, int height) {
+    public Request(int id, int user_id, int length, int width, String roofType, Timestamp dateTime, int height) {
         this.id = id;
         this.user_id = user_id;
         this.length = length;

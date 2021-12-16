@@ -37,7 +37,7 @@ public class RequestMapper
                     int height = rs.getInt("height");
                     int width = rs.getInt("width");
                     String roofType = rs.getString("roofType");
-                    String dateTime = rs.getString("date_time");
+                    Timestamp dateTime = rs.getTimestamp("date_time");
                     Request request = new Request(requestId, user_id, length, width, roofType, dateTime, height);
                     requestList.add(request);
 
@@ -67,6 +67,7 @@ public class RequestMapper
                 ps.setInt(2, request.getLength());
                 ps.setInt(3, request.getWidth());
                 ps.setString(4, request.getRoofType());
+
                 ps.executeUpdate();
                 ResultSet ids = ps.getGeneratedKeys();
                 ids.next();
