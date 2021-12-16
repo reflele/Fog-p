@@ -23,10 +23,10 @@ public class CommandAllOrders extends Command {
 
         HttpSession session = request.getSession();
 
-       int id = (int) session.getAttribute("userId");
+       int userId = (int) session.getAttribute("userId");
 
 
-       List<Request> requestsList = requestFacade.getRequestById(id);
+       List<Request> requestsList = requestFacade.getRequestById(userId);
 
 
      request.getSession().setAttribute("requestsList",requestsList);
