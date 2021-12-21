@@ -31,6 +31,7 @@ public abstract class Command
         commands.put("motortest",new MotorTestPage("motortest"));
         commands.put("showallorders", new CommandAllOrders("showallorders"));
         commands.put("employeepage", new CommandProtectedPage("employeepage", "employee"));
+        commands.put("showsvg", new ShowSvgCommand("svgpage"));
     }
 
     public static Command fromPath(
