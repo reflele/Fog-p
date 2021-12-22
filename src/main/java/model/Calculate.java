@@ -15,9 +15,14 @@ public class Calculate {
         materialFacade = new MaterialFacade(database);
     }
 
-    static double minLengthWidth = 450; //if carport length < minLength. No extra posts are added.
-    static double postsDistance = 210; //if side is longer than minLength, extra posts will be added to the construction for every postsDistance cm.
-    static double raftersDistance = 55;
+    public static double minLengthWidth = 450; //if carport length < minLength. No extra posts are added.
+    public static double postsDistance = 210; //if side is longer than minLength, extra posts will be added to the construction for every postsDistance cm.
+
+    public double getRaftersDistance() {
+        return raftersDistance;
+    }
+
+    double raftersDistance = 55;
 
 
     public double rafters(double carPortLength, double carportWidth) throws UserException {
@@ -52,6 +57,7 @@ public class Calculate {
 
         }
 
+
         raftersCount = (longSide / raftersDistance); //vi skal enten +1 eller -1 baseret på om der skal være rafters på ydersiderne
 
         //raftersCount skal rundes op
@@ -59,6 +65,9 @@ public class Calculate {
 
         System.out.println("rafterscount:");
         System.out.println(raftersCount);
+
+        //tilføj rafters afstand fra hinanden.
+
 
 
 

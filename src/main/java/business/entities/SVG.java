@@ -1,4 +1,4 @@
-package business.services;
+package business.entities;
 
 public class SVG
 {
