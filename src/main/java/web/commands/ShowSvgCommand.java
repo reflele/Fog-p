@@ -21,7 +21,7 @@ public class ShowSvgCommand extends CommandUnprotectedPage {
 Calculate calculate = new Calculate(database);
 
 int raftersDistance = (int) calculate.getRaftersDistance();
-int postDistance = (int) Calculate.postsDistance;
+int postDistance = (int) calculate.getPostsDistance();
 
         //viewbox
         SVG svg = new SVG(0, 0, "0 0 800 600", 100, 100);
