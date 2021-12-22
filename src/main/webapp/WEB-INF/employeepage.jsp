@@ -9,11 +9,27 @@
     <jsp:attribute name="footer">
     </jsp:attribute>
     <jsp:body>
+        <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-4"></div>
+
+            <div class="col-md-4">
+
+                <form action="showallorders" method="post">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Se og behandl ordrer</button>
+                </form>
+
+                <br><br/>
+
+                <form action="orderpage" method="post">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Tilføj ny ordre</button>
+                </form>
 
 
-
-        <h1>Hello ${sessionScope.email} </h1>
-        You are now logged in as a EMPLOYEE of our wonderful site.
-
+            </div>
+            <div class="col-md-4"></div>
+        </div>
     </jsp:body>
 </t:genericpage>

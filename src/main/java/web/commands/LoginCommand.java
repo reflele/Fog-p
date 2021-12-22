@@ -3,6 +3,7 @@ package web.commands;
 import business.entities.User;
 import business.services.UserFacade;
 import business.exceptions.UserException;
+import model.Calculate;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

@@ -38,7 +38,8 @@ public class RequestMapper
                     int width = rs.getInt("width");
                     String roofType = rs.getString("roofType");
                     Timestamp dateTime = rs.getTimestamp("date_time");
-                    Request request = new Request(requestId, user_id, length, width, roofType, dateTime, height);
+                    int status = rs.getInt("order_status");
+                    Request request = new Request(requestId, user_id, length, width, roofType, dateTime, height, status);
                     requestList.add(request);
 
                 }
@@ -85,4 +86,37 @@ public class RequestMapper
         }
     }
 
+    public List<Request> getAllRequests() throws UserException {
+        List<Request> requestList = null;
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT * FROM `carport_request`";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    if (requestList == null) {
+                        requestList = new ArrayList<>();
+                    }
+                    int requestId = rs.getInt("request_id");
+                    int user_id = rs.getInt("user_id");
+                    int length = rs.getInt("length");
+                    int height = rs.getInt("height");
+                    int width = rs.getInt("width");
+                    String roofType = rs.getString("roofType");
+                    Timestamp dateTime = rs.getTimestamp("date_time");
+                    int status = rs.getInt("order_status");
+                    Request request = new Request(requestId, user_id, length, width, roofType, dateTime, height, status);
+                    requestList.add(request);
+
+                }
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            throw new UserException(ex.getMessage());
+        }
+        return requestList;
+
+
+    }
 }

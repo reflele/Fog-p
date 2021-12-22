@@ -32,6 +32,7 @@ public abstract class Command
         commands.put("showallorders", new CommandAllOrders("showallorders"));
         commands.put("employeepage", new CommandProtectedPage("employeepage", "employee"));
         commands.put("showsvg", new ShowSvgCommand("svgpage"));
+        commands.put("editorder", new CommandEditOrder("editorder","employee"));
     }
 
     public static Command fromPath(

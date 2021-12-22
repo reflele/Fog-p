@@ -11,19 +11,30 @@ public class Calculate {
 
     MaterialFacade materialFacade;
 
+    public ArrayList<BomMaterial> getBomMaterials() {
+        return bomMaterials;
+    }
+
+
     public Calculate(Database database) {
         materialFacade = new MaterialFacade(database);
+//        MaterialFacade materialFacade = new MaterialFacade(database);
     }
 
-    public static double minLengthWidth = 450; //if carport length < minLength. No extra posts are added.
-    public static double postsDistance = 210; //if side is longer than minLength, extra posts will be added to the construction for every postsDistance cm.
 
-    public double getRaftersDistance() {
-        return raftersDistance;
+    static double minLengthWidth = 450; //if carport length < minLength. No extra posts are added.
+    static double postsDistance = 210; //if side is longer than minLength, extra posts will be added to the construction for every postsDistance cm.
+    static double raftersDistance = 55;
+
+
+    public List<Material> CategoryList(String category) throws UserException {
+
+        List<Material> list = new ArrayList<>();
+
+        list = materialFacade.getMaterialByCategory(category);
+
+        return list;
     }
-
-    double raftersDistance = 55;
-
 
     public double rafters(double carPortLength, double carportWidth) throws UserException {
 
@@ -57,34 +68,27 @@ public class Calculate {
 
         }
 
+        raftersCount = (longSide / raftersDistance);
+        //vi skal enten +1 eller -1 baseret på om der skal være rafters på ydersiderne
 
-        raftersCount = (longSide / raftersDistance); //vi skal enten +1 eller -1 baseret på om der skal være rafters på ydersiderne
-
-        //raftersCount skal rundes op
-
-
-        System.out.println("rafterscount:");
-        System.out.println(raftersCount);
-
-        //tilføj rafters afstand fra hinanden.
+        //raftersCount skal rundes op og castes som int
 
 
+        BomMaterial bomMaterial = new BomMaterial(rafterId, (int) raftersCount);
+
+
+        bomMaterials.add(bomMaterial);
 
 
         return raftersLength;
     }
 
-    public List<Material> CategoryList(String category) throws UserException {
-
-        List<Material> list = new ArrayList<>();
-
-        list = materialFacade.getMaterialByCategory(category);
-
-        return list;
-    }
 
     public double beams(double carPortLength, double carPortWidth) throws UserException {
 
+        double beamLength = 0;
+        int beamRequiredCount = 0;
+        int beamId = 0;
 
         List<Material> beamsList;
         beamsList = CategoryList("beam"); //gets beams from db
@@ -100,9 +104,6 @@ public class Calculate {
             longSide = carPortWidth;
         }
 
-        double beamLength = 0;
-        int beamRequiredCount = 0;
-        int beamId = 0;
 
         for (int i = 0; i < beamsList.size(); i++) {
             if (beamsList.get(i).getLength() > longSide) {
@@ -112,8 +113,8 @@ public class Calculate {
                 break;
             }
 
+
         }
-        System.out.println(beamId);
 
         if (beamRequiredCount == 0) {
 
@@ -130,6 +131,8 @@ public class Calculate {
             }
 
         }
+        BomMaterial bomMaterial = new BomMaterial(beamId, beamRequiredCount);
+        bomMaterials.add(bomMaterial);
 
 
         return beamLength;
@@ -143,11 +146,14 @@ public class Calculate {
 
     }
 
-    public static double posts(double carPortLength, double carPortWidth) {
+    public double posts(double carPortLength, double carPortWidth) {
 
         //getDimensionsFromReqId(reqId);
 
+        int postId = 777; //hardcoded del. en post med denne postId skal sættes i db.
         double postsCount = 4;
+
+        carPortLength = carPortLength*0.8;
 
         if (carPortWidth >= minLengthWidth) {
             double extraWidth = carPortWidth - minLengthWidth;
@@ -163,13 +169,19 @@ public class Calculate {
             }
         }
         //add to a list
+
+        BomMaterial bomMaterial = new BomMaterial(postId, (int) postsCount);
+
+        bomMaterials.add(bomMaterial);
+
+
         return postsCount;
     }
 
 
-    public static double roofing(double carPortLength, double carPortWidth) {
+    public double roofing(double carPortLength, double carPortWidth) {
 
-        int roofSheetId = 666;
+        int roofSheetId = 666; //hardcoded del. en roof med denne roofSheetId skal sættes i db.
         double roofSheetlength = 200;
         double roofSheetWidth = 220;
         double roofSheetSurface = roofSheetlength * roofSheetWidth;
@@ -182,9 +194,37 @@ public class Calculate {
 
         amountOfSheets = roofSheetSurface / (roofSheetlength * roofSheetWidth);
 
+        BomMaterial bomMaterial = new BomMaterial(roofSheetId, (int) Math.ceil(amountOfSheets));
+
+        bomMaterials.add(bomMaterial);
+
+
         //runder altid op til nærmeste hele tal
         return Math.ceil(amountOfSheets);
+
+
     }
+
+    ArrayList<BomMaterial> bomMaterials = new ArrayList<>();
+
+    public double calcPrice(ArrayList<BomMaterial> bomMaterials) throws UserException {
+
+
+        double materialsPrice;
+        double purchasePrice = 0;
+
+        for (int i = 0; i < bomMaterials.size(); i++) {
+
+            materialsPrice = materialFacade.getPriceById(bomMaterials.get(i).getMaterialId());
+            materialsPrice = materialsPrice * bomMaterials.get(i).getCount();
+
+            purchasePrice = purchasePrice + materialsPrice;
+
+
+        }
+        return purchasePrice;
+    }
+
 
 }
 

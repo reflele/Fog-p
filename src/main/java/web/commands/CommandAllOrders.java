@@ -19,14 +19,21 @@ public class CommandAllOrders extends Command {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
 
 
-            RequestFacade requestFacade = new RequestFacade(database);
+        RequestFacade requestFacade = new RequestFacade(database);
 
         HttpSession session = request.getSession();
 
        int userId = (int) session.getAttribute("userId");
+       String role = (String) session.getAttribute("role");
 
+       List<Request> requestsList = new ArrayList<>();
 
-       List<Request> requestsList = requestFacade.getRequestById(userId);
+       if (role.equals("customer")){
+          requestsList = requestFacade.getRequestById(userId);
+       } else if (role.equals("employee")){
+           requestsList = requestFacade.getAllRequests();
+       }
+
 
 
      request.getSession().setAttribute("requestsList",requestsList);

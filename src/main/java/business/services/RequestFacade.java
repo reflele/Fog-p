@@ -6,6 +6,7 @@ import business.exceptions.UserException;
 import business.persistence.Database;
 import business.persistence.RequestMapper;
 import business.persistence.UserMapper;
+import model.Calculate;
 import model.Request;
 
 import java.util.List;
@@ -18,7 +19,6 @@ public class RequestFacade
     {
         requestMapper = new RequestMapper(database);
     }
-
 
 
 public List<Request> getRequestById (int id) throws UserException{
@@ -34,4 +34,7 @@ public List<Request> getRequestById (int id) throws UserException{
         return request;
     }
 
+    public List<Request> getAllRequests() throws UserException {
+        return requestMapper.getAllRequests();
+    }
 }

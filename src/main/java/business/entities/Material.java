@@ -1,7 +1,5 @@
 package business.entities;
 
-import java.util.List;
-
 public class Material {
     private int material_id;
     private String description;

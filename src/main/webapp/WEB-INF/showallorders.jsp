@@ -43,6 +43,7 @@
                 </tr>
                 <tbody>
                 <tr>
+                    <c:if test="${sessionScope.user.role == 'customer'}">
                     <c:if test="${sessionScope.requestsList == null}">
                     <h1 class="text-center"> Du har ikke sendt nogen forespørgsler</h1>
                         </c:if>
@@ -55,10 +56,47 @@
                     <td>${reqlist.width}</td>
                     <td> 210</td>
                     <td> ${reqlist.dateTime}</td>
-                    <td> Afventer godkendelse</td>
+                    <td> ${reqlist.status}</td>
                 </tr>
                 </c:forEach>
                 </c:if>
+                </c:if>
+
+
+
+
+                <c:if test="${sessionScope.user.role == 'employee'}">
+                <c:if test="${sessionScope.requestsList == null}">
+                    <h1 class="text-center"> Der er ingen forespørgsler at vise</h1>
+                </c:if>
+                <c:if test="${sessionScope.requestsList != null}">
+
+                    <c:forEach var="reqlist" items="${sessionScope.requestsList}">
+                        <tr>
+                            <td>${reqlist.id}</td>
+                            <td> ${reqlist.length}</td>
+                            <td>${reqlist.width}</td>
+                            <td> ${reqlist.height}</td>
+                            <td> ${reqlist.dateTime}</td>
+                            <td>
+                                <c:if test="${reqlist.status == 0}">
+                                    <form action="editorder" method="post">
+                                        <button type="submit" class="btn btn-primary btn-block">Opret tilbud</button>
+                                        <input type="hidden" name="reqid" value="${reqlist.id}"/>
+                                    </form>
+                                </c:if>
+                                <c:if test="${reqlist.status == 1}">
+                                    Afvent kundesvar
+                                </c:if>
+                                <c:if test="${reqlist.status == 2}">
+                                    Ordre gennemført
+                                </c:if>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </c:if>
+                </c:if>
+
 
                 </tr>
                 </tbody>

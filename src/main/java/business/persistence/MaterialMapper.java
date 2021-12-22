@@ -80,6 +80,26 @@ public class MaterialMapper {
         return materialList;
     }
 
+    public double getPriceById(int materialId) throws UserException {
+        double materialPrice = 0;
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT * FROM `material` WHERE `material_id`=?";
 
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, materialId);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    double price = rs.getDouble("price");
+                    materialPrice = price;
+
+                }
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            throw new UserException(ex.getMessage());
+        }
+        return materialPrice;
+    }
 
 }
