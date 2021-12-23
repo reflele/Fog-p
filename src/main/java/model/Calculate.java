@@ -24,7 +24,7 @@ public class Calculate {
 
     static double minLengthWidth = 450; //if carport length < minLength. No extra posts are added.
     double postsDistance = 210; //if side is longer than minLength, extra posts will be added to the construction for every postsDistance cm.
-    double raftersDistance = 55;
+    double raftersDistance = 52;
 
     public double getPostsDistance() {
         return postsDistance;
