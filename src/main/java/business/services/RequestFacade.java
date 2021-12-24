@@ -25,6 +25,10 @@ public List<Request> getRequestById (int id) throws UserException{
     return requestMapper.getRequestById(id);
 }
 
+    public void addPrice (int requestId, double price) throws UserException{
+        requestMapper.addPrice(requestId, price);
+    }
+
     public Request createRequest(int user_id, int length, int width, String roofType) throws UserException
     {
         Request request = new Request(user_id,length,width,roofType);

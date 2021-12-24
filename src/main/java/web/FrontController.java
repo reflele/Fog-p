@@ -18,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
 public class FrontController extends HttpServlet
 {
     private final static String USER = "root";
-    private final static String PASSWORD = "Anas2635";
-    private final static String URL = "jdbc:mysql://localhost:3306/fog_carport?serverTimezone=CET";
+    private final static String PASSWORD = "root";
+    private final static String URL = "jdbc:mysql://localhost:3306/mydb?serverTimezone=CET";
 
     public static Database database;
 
@@ -60,14 +60,21 @@ public class FrontController extends HttpServlet
 
             String view = action.execute(request, response);
 
+
+
             if (view.startsWith(Command.REDIRECT_INDICATOR)) {
                 String page = view.substring(Command.REDIRECT_INDICATOR.length());
                 response.sendRedirect(page);
                 return;
             }
 
-            request.getRequestDispatcher("/WEB-INF/" + view + ".jsp").forward(request, response);
-        }
+//            if (view.contains("test")){
+//                request.getRequestDispatcher("/images/test.jpg").forward(request, response);
+//            } else {
+
+                request.getRequestDispatcher("/WEB-INF/" + view + ".jsp").forward(request, response);
+            }
+//        }
         catch (UnsupportedEncodingException | UserException ex)
         {
             request.setAttribute("problem", ex.getMessage());

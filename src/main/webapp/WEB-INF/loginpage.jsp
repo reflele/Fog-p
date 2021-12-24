@@ -2,6 +2,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
 <t:genericpage>
     <jsp:attribute name="header">
          Login page
@@ -11,6 +12,10 @@
     </jsp:attribute>
 
     <jsp:body>
+
+<%--        <div class="row">--%>
+<%--        <div class="col-md-4"></div>--%>
+
         <div style="margin-top: 5em;" class="container">
             <form name="login" action="${pageContext.request.contextPath}/fc/logincommand"  method="POST">
                 <div class="row mb-3">
@@ -36,6 +41,7 @@
                 </c:if>
                 <button class="btn btn-primary" type="submit" value="Login">Sign in</button>
             </form>
+
 
 
         </div>

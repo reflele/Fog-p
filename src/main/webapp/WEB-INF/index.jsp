@@ -36,7 +36,6 @@
 
     <jsp:body>
 
-
         <h2 class="text-center">Carport designside</h2>
 
         <div style="margin-top: 3em;margin-bottom: 3em;">

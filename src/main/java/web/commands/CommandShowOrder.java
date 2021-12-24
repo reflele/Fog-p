@@ -1,20 +1,19 @@
 package web.commands;
 
 import business.exceptions.UserException;
-import model.Calculate;
 import model.CalculateBom;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class CommandEditOrder extends Command
+public class CommandShowOrder extends Command
 {
     public String role;
     public int id;
     public String email;
     public String pageToShow;
 
-    public CommandEditOrder(String pageToShow, String role)
+    public CommandShowOrder(String pageToShow, String role)
     {
         this.pageToShow = pageToShow;
         this.role = role;

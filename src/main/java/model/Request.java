@@ -11,8 +11,17 @@ public class Request {
     int status;
     String roofType;
     Timestamp dateTime;
+    double price;
 
-    public Request(int id, int user_id, int length, int width, String roofType, Timestamp dateTime, int height, int status) {
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public Request(int id, int user_id, int length, int width, String roofType, Timestamp dateTime, int height, int status, double price) {
         this.id = id;
         this.user_id = user_id;
         this.length = length;
@@ -21,6 +30,7 @@ public class Request {
         this.roofType = roofType;
         this.dateTime = dateTime;
         this.height = height;
+        this.price = price;
     }
 
     public int getStatus() {

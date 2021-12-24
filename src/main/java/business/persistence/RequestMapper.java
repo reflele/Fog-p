@@ -39,7 +39,8 @@ public class RequestMapper
                     String roofType = rs.getString("roofType");
                     Timestamp dateTime = rs.getTimestamp("date_time");
                     int status = rs.getInt("order_status");
-                    Request request = new Request(requestId, user_id, length, width, roofType, dateTime, height, status);
+                    double price = rs.getDouble("price");
+                    Request request = new Request(requestId, user_id, length, width, roofType, dateTime, height, status, price);
                     requestList.add(request);
 
                 }
@@ -52,7 +53,28 @@ public class RequestMapper
         return requestList;
     }
 
+    public void addPrice(int reqId, double price) throws UserException
+    {
+        try (Connection connection = database.connect())
+        {
+            String sql = "UPDATE carport_request SET price = ? WHERE `request_id` = ?";
 
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
+            {
+                ps.setDouble(1, price);
+                ps.setInt(2, reqId);
+                ps.executeUpdate();
+            }
+            catch (SQLException ex)
+            {
+                throw new UserException(ex.getMessage());
+            }
+        }
+        catch (SQLException ex)
+        {
+            throw new UserException(ex.getMessage());
+        }
+    }
 
 
 
@@ -105,7 +127,8 @@ public class RequestMapper
                     String roofType = rs.getString("roofType");
                     Timestamp dateTime = rs.getTimestamp("date_time");
                     int status = rs.getInt("order_status");
-                    Request request = new Request(requestId, user_id, length, width, roofType, dateTime, height, status);
+                    double price = rs.getDouble("price");
+                    Request request = new Request(requestId, user_id, length, width, roofType, dateTime, height, status, price);
                     requestList.add(request);
 
                 }

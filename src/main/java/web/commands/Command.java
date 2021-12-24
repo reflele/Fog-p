@@ -33,6 +33,10 @@ public abstract class Command
         commands.put("employeepage", new CommandProtectedPage("employeepage", "employee"));
         commands.put("showsvg", new ShowSvgCommand("svgpage"));
         commands.put("editorder", new CommandEditOrder("editorder","employee"));
+        commands.put("showorder", new CommandShowOrder("showorder","employee"));
+        commands.put("limitedseemore", new LimitedShowMoreCommand("limitedseemore"));
+        commands.put("fullseemore", new FullShowMoreCommand("fullseemore"));
+        commands.put("redirect", new Redirect("redirect"));
     }
 
     public static Command fromPath(

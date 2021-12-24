@@ -20,24 +20,36 @@ public class CommandAllOrders extends Command {
 
 
         RequestFacade requestFacade = new RequestFacade(database);
-
         HttpSession session = request.getSession();
+        int updatePrice = 0;
 
-       int userId = (int) session.getAttribute("userId");
-       String role = (String) session.getAttribute("role");
+        try {
+            updatePrice = Integer.parseInt(request.getParameter("updateprice"));
+        }catch (Exception e){
 
-       List<Request> requestsList = new ArrayList<>();
+        }
+        if (updatePrice == 1){
+            int reqId = Integer.parseInt(request.getParameter("reqid"));
+            double price = Double.parseDouble(request.getParameter("price"));
+            requestFacade.addPrice(reqId, price);
+        }
+//       //dette tilføjer en pris til en specifik carportforespørgsel. metoden burde nok eksistere et andet sted i koden.
 
-       if (role.equals("customer")){
-          requestsList = requestFacade.getRequestById(userId);
-       } else if (role.equals("employee")){
-           requestsList = requestFacade.getAllRequests();
-       }
+        int userId = (int) session.getAttribute("userId");
+        String role = (String) session.getAttribute("role");
+
+        List<Request> requestsList = new ArrayList<>();
+
+        if (role.equals("customer")) {
+            requestsList = requestFacade.getRequestById(userId);
+        } else if (role.equals("employee")) {
+            requestsList = requestFacade.getAllRequests();
+        }
 
 
+//        request.getSession().setAttribute("reqid", reqId);
+        request.getSession().setAttribute("requestsList", requestsList);
 
-     request.getSession().setAttribute("requestsList",requestsList);
-
-            return "showallorders";
+        return "showallorders";
     }
 }
