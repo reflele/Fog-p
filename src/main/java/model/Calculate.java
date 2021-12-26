@@ -212,6 +212,26 @@ public class Calculate {
 
     }
 
+    public void screws(double carPortLength, double carPortWidth) {
+
+
+        double areal = carPortLength * carPortWidth;
+
+        int count;
+
+        if (areal <= 250000){
+            count = 1;
+        } else {
+             count = 2;
+        }
+
+        BomMaterial bomMaterial = new BomMaterial(999, count);
+        bomMaterials.add(bomMaterial);
+        return;
+    }
+
+
+
     ArrayList<BomMaterial> bomMaterials = new ArrayList<>();
 
     public double calcPrice(ArrayList<BomMaterial> bomMaterials) throws UserException {

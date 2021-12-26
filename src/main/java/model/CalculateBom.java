@@ -88,6 +88,7 @@ public class CalculateBom {
         calculateBom.beams(carPortLength, carPortWidth);
         calculateBom.rafters(carPortLength, carPortWidth);
         calculateBom.roofing(carPortLength, carPortWidth);
+        calculateBom.screws(carPortLength,carPortWidth);
 
         reqPurchasePrise = calculateBom.calcPrice(calculateBom.getBomMaterials());
 
