@@ -20,9 +20,13 @@
         <div>
             <h2 class="text-center">Vis svg tegning</h2>
 
-            <p>her indsættes svg tegning:</p>
 
-                ${requestScope.svgdrawing}
+            <p>her indsættes svg tegning:</p>
+<%--            <input type="number" name="commanumber" value="1.99" step="any" />--%>
+<%--            <input type="number" step="0.01" min="0" lang="en" value="1.99">--%>
+
+
+        ${requestScope.svgdrawing}
 
         </div>
 

@@ -142,6 +142,7 @@ public class RequestMapper
                     if (requestList == null) {
                         requestList = new ArrayList<>();
                     }
+
                     int requestId = rs.getInt("request_id");
                     int user_id = rs.getInt("user_id");
                     int length = rs.getInt("length");

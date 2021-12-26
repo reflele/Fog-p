@@ -30,6 +30,8 @@ public class FullShowMoreCommand extends Command {
 
 
         reqId = Integer.parseInt(request.getParameter("reqid"));
+
+
         description = calculateBom.carportDescription(reqId);
 
 
@@ -46,9 +48,6 @@ public class FullShowMoreCommand extends Command {
 
 
         request.getSession().setAttribute("requestsList", requestsList);
-
-
-
         request.getSession().setAttribute("description", description);
         request.getSession().setAttribute("reqid", reqId);
 

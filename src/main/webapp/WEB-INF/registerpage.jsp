@@ -17,37 +17,30 @@
 
                         <div class="container">
                             <div>
-                                <div>
-                                    <label class="col-sm-1 col-form-label" for="firstname">Fornavn</label>
 
-                                    <input id="firstname" class="form-control" type="text" name="firstname"
-                                           value="${param.email}" placeholder="Indtast fornavn">
 
+                                <div class="form-floating">
+                                    <input value="${param.password1}" name="firstname" type="text" class="form-control" id="firstname" placeholder="Fornavn">
+                                    <label for="firstname">Fornavn</label>
                                 </div>
-                                <div>
-                                    <label class="col-sm-1 col-form-label" for="lastname">Efternavn</label>
-                                        <%--                    <div class="col-sm-4">--%>
-                                    <input id="lastname" class="form-control" type="text" name="lastname"
-                                           value="${param.password1}" placeholder="Indtast efternavn">
-                                        <%--                    </div>--%>
+<br>
+                                <div class="form-floating">
+                                    <input value="${param.password1}" name="lastname" type="text" class="form-control" id="lastname" placeholder="Efternavn">
+                                    <label for="lastname">Efternavn</label>
                                 </div>
-
-                                <div>
-                                    <label class="col-sm-1 col-form-label" for="email">Email</label>
-
-                                    <input id="email" class="form-control" type="text" name="email"
-                                           value="${param.email}" placeholder="Indtast email">
-
+                                <br>
+                                <div class="form-floating">
+                                    <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                    <label for="floatingInput">Email address</label>
                                 </div>
 
-                                <div>
-                                    <label class="col-sm-1 col-form-label" for="phone">Telefonnummer</label>
-                                        <%--                    <div class="col-sm-4">--%>
-                                    <input id="phone" class="form-control" type="phone" name="phone"
-                                           value="${param.password2}" placeholder="Indtast dit telefonnummer">
-                                        <%--                    </div>--%>
-                                    <br>
+                                <br>
+                                <div class="form-floating">
+                                    <input value="${param.password1}" name="phone" type="text" class="form-control" id="phone" placeholder="Telefonnummer">
+                                    <label for="phone">Telefonnummer</label>
                                 </div>
+                                <br>
+
                                 <button type="submit" class="btn btn-primary btn btn-block">Opret bruger</button>
                             </div>
                         </div>
@@ -56,42 +49,29 @@
 
                     <div class="col-md-4">
                         <div>
-                            <div>
-                                <label class="col-sm-1 col-form-label" for="address">Adresse</label>
-                                    <%--                    <div class="col-sm-4">--%>
-                                <input id="address" class="form-control" type="address" name="address"
-                                       value="${param.password2}" placeholder="Indtast adresse">
-                                    <%--                    </div>--%>
-                                    <%--                            <input class="btn btn-primary" type="submit" type="submit" value="Submit">--%>
+
+                            <div class="form-floating">
+                                <input value="${param.password1}" name="address" type="text" class="form-control" id="address" placeholder="Adresse">
+                                <label for="address">Adresse</label>
+                            </div>
+<br>
+
+                            <div class="form-floating">
+                                <input value="${param.password1}" name="zip" type="text" class="form-control" id="zip" placeholder="Password">
+                                <label for="zip">Postnummer</label>
                             </div>
 
-                            <div>
-                                <label class="col-sm-1 col-form-label" for="zip">Postnummer</label>
-                                    <%--                    <div class="col-sm-4">--%>
-                                <input id="zip" class="form-control" type="zip" name="zip"
-                                       value="${param.password1}"
-                                       placeholder="indtast postnummer">
-                                    <%--                    </div>--%>
+<br>
+                            <div class="form-floating">
+                                <input value="${param.password1}" name="password1" type="password" class="form-control" id="password1" placeholder="Password">
+                                <label for="password1">Password</label>
+                            </div>
+                            <br>
+                            <div class="form-floating">
+                                <input value="${param.password2}" name="password2" type="password" class="form-control" id="password2" placeholder="Password">
+                                <label for="password2">Password</label>
                             </div>
 
-
-                            <div>
-                                <label class="col-sm-1 col-form-label" for="password1">Kode</label>
-                                    <%--                    <div class="col-sm-4">--%>
-                                <input id="password1" class="form-control" type="password" name="password1"
-                                       value="${param.password1}" placeholder="Indtast kode">
-                                    <%--                    </div>--%>
-                            </div>
-                            <div>
-                                <label class="col-sm-1 col-form-label" for="password2">Password</label>
-                                    <%--                    <div class="col-sm-4">--%>
-                                <input id="password2" class="form-control" type="password" name="password2"
-                                       value="${param.password2}" placeholder="Gentag kode">
-                                    <%--                    </div>--%>
-                                    <%--                                <input class="btn btn-primary" type="submit" type="submit" value="Submit">--%>
-                                <br>
-
-                            </div>
 
 
                         </div>

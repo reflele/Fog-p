@@ -26,7 +26,10 @@ public class ShowSvgCommand extends CommandUnprotectedPage {
         SVG carport =  drawSVG.draw(78);
 
 
-        request.setAttribute("svgdrawing", carport.toString());
+        request.setAttribute("svgdrawing", carport.toString().replace(",","."));
+        //ints ville virke
+        //doubles skaber problemer
+        //midlertidig løsning, ændrer alle kommaer lige
         return pageToShow;
 
     }
