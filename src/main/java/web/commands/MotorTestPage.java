@@ -47,13 +47,16 @@ public class MotorTestPage extends Command {
         int postsCount;
         double SheetsCount;
 
+
+
         double carPortLength = Double.parseDouble(request.getParameter("length"));
         double carPortWidth = Double.parseDouble(request.getParameter("width"));
         String roofType = request.getParameter("roof");
+        String description = request.getParameter("description");
 
         HttpSession session = request.getSession();
 
-        requestFacade.createRequest((int) session.getAttribute("userId"), (int) carPortLength, (int) carPortWidth, roofType);
+        requestFacade.createRequest((int) session.getAttribute("userId"), (int) carPortLength, (int) carPortWidth, roofType, description);
 
 
         surfaceAreaSides = (carPortLength * carPortHeight + carPortWidth * carPortHeight + shortSide * carPortHeight);
@@ -74,6 +77,8 @@ public class MotorTestPage extends Command {
         request.getSession().setAttribute("amountOfSheets", SheetsCount);
         request.getSession().setAttribute("surface", surfaceAreaSides);
         request.getSession().setAttribute("woodenPostCount", postsCount);
+        request.getSession().setAttribute("description", description);
+
 
         return "motortest";
     }

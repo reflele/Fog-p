@@ -24,7 +24,7 @@
 
 
 <%--    <form action="redirect?target=redirect&destination=showallorders" method="post">--%>
-            <form action="showallorders" method="post">
+            <form action="redirect" method="post">
                 <div class="mb-3">
                     <h2 class="text-center">Angiv salgspris</h2>
                     <h6>Du er ved at angive en salgspris for ordrenummer ${sessionScope.reqid}.</h6>
@@ -42,6 +42,7 @@
                     <button type="submit" class="btn btn-primary">giv tilbud</button>
                     <input type="hidden" name="reqid" value="${sessionScope.reqid}"/>
                     <input type="hidden" name="updateprice" value="1" />
+                    <input type="hidden" name="destination" value="showallorders" />
                 </div>
             </form>
 

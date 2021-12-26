@@ -34,8 +34,8 @@ public abstract class Command
         commands.put("showsvg", new ShowSvgCommand("svgpage"));
         commands.put("editorder", new CommandEditOrder("editorder","employee"));
         commands.put("showorder", new CommandShowOrder("showorder","employee"));
-        commands.put("limitedseemore", new LimitedShowMoreCommand("limitedseemore"));
-        commands.put("fullseemore", new FullShowMoreCommand("fullseemore"));
+        commands.put("limitedshowmore", new LimitedShowMoreCommand("limitedshowmore"));
+        commands.put("fullshowmore", new FullShowMoreCommand("fullshowmore"));
         commands.put("redirect", new Redirect("redirect"));
     }
 

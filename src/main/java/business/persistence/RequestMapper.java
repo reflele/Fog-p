@@ -40,7 +40,8 @@ public class RequestMapper
                     Timestamp dateTime = rs.getTimestamp("date_time");
                     int status = rs.getInt("order_status");
                     double price = rs.getDouble("price");
-                    Request request = new Request(requestId, user_id, length, width, roofType, dateTime, height, status, price);
+                    String description = rs.getString("description");
+                    Request request = new Request(requestId, user_id, length, width, roofType, dateTime, height, status, price, description);
                     requestList.add(request);
 
                 }
@@ -76,13 +77,34 @@ public class RequestMapper
         }
     }
 
+    public void updateStatus(int reqId, int status) throws UserException
+    {
+        try (Connection connection = database.connect())
+        {
+            String sql = "UPDATE carport_request SET order_status = ? WHERE `request_id` = ?";
 
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
+            {
+                ps.setInt(1, status);
+                ps.setInt(2, reqId);
+                ps.executeUpdate();
+            }
+            catch (SQLException ex)
+            {
+                throw new UserException(ex.getMessage());
+            }
+        }
+        catch (SQLException ex)
+        {
+            throw new UserException(ex.getMessage());
+        }
+    }
 
     public void createRequest(Request request) throws UserException
     {
         try (Connection connection = database.connect())
         {
-            String sql = "INSERT INTO carport_request (user_id, length, width, rooftype) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO carport_request (user_id, length, width, rooftype, description) VALUES (?, ?, ?, ?, ?)";
 
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
             {
@@ -90,6 +112,7 @@ public class RequestMapper
                 ps.setInt(2, request.getLength());
                 ps.setInt(3, request.getWidth());
                 ps.setString(4, request.getRoofType());
+                ps.setString(5, request.getDescription());
 
                 ps.executeUpdate();
                 ResultSet ids = ps.getGeneratedKeys();
@@ -128,7 +151,8 @@ public class RequestMapper
                     Timestamp dateTime = rs.getTimestamp("date_time");
                     int status = rs.getInt("order_status");
                     double price = rs.getDouble("price");
-                    Request request = new Request(requestId, user_id, length, width, roofType, dateTime, height, status, price);
+                    String description = rs.getString("description");
+                    Request request = new Request(requestId, user_id, length, width, roofType, dateTime, height, status, price, description);
                     requestList.add(request);
 
                 }

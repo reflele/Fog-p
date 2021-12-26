@@ -20,7 +20,7 @@ public class RequestFacade
         requestMapper = new RequestMapper(database);
     }
 
-
+    //id refers to userId, not requestId
 public List<Request> getRequestById (int id) throws UserException{
     return requestMapper.getRequestById(id);
 }
@@ -29,9 +29,13 @@ public List<Request> getRequestById (int id) throws UserException{
         requestMapper.addPrice(requestId, price);
     }
 
-    public Request createRequest(int user_id, int length, int width, String roofType) throws UserException
+    public void updateStatus (int requestId, int status) throws UserException{
+        requestMapper.updateStatus(requestId, status);
+    }
+
+    public Request createRequest(int user_id, int length, int width, String roofType, String description) throws UserException
     {
-        Request request = new Request(user_id,length,width,roofType);
+        Request request = new Request(user_id,length,width,roofType, description);
 
         requestMapper.createRequest(request);
 

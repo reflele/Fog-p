@@ -4,6 +4,7 @@ import business.exceptions.UserException;
 import business.services.RequestFacade;
 import model.Request;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -11,9 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CommandAllOrders extends Command {
-    public CommandAllOrders(String showallorders) {
-        super();
+    public CommandAllOrders(String pageToShow) {
+//        super();
+
+        this.pageToShow = pageToShow;
     }
+    public String pageToShow;
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
@@ -21,22 +25,16 @@ public class CommandAllOrders extends Command {
 
         RequestFacade requestFacade = new RequestFacade(database);
         HttpSession session = request.getSession();
-        int updatePrice = 0;
 
-        try {
-            updatePrice = Integer.parseInt(request.getParameter("updateprice"));
-        }catch (Exception e){
-
-        }
-        if (updatePrice == 1){
-            int reqId = Integer.parseInt(request.getParameter("reqid"));
-            double price = Double.parseDouble(request.getParameter("price"));
-            requestFacade.addPrice(reqId, price);
-        }
-//       //dette tilføjer en pris til en specifik carportforespørgsel. metoden burde nok eksistere et andet sted i koden.
+        int reqId = 0;
 
         int userId = (int) session.getAttribute("userId");
         String role = (String) session.getAttribute("role");
+        try {
+            reqId = (int) session.getAttribute("reqid");
+        } catch (Exception e){
+
+        }
 
         List<Request> requestsList = new ArrayList<>();
 
@@ -47,9 +45,14 @@ public class CommandAllOrders extends Command {
         }
 
 
-//        request.getSession().setAttribute("reqid", reqId);
+        request.getSession().setAttribute("reqid", reqId);
+        request.getSession().setAttribute("userid", userId);
+        request.getSession().setAttribute("role", role);
         request.getSession().setAttribute("requestsList", requestsList);
 
-        return "showallorders";
+
+
+        return pageToShow;
     }
+
 }

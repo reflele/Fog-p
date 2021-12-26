@@ -73,13 +73,13 @@
 
                 <td>
                     <c:if test="${reqlist.status == 1}">
-                        <form action="fullseemore" method="post">
+                        <form action="fullshowmore" method="post">
                             <button type="submit" class="btn btn-primary btn-block">vis stykliste osv</button>
                             <input type="hidden" name="reqid" value="${reqlist.id}"/>
                         </form>
                     </c:if>
                     <c:if test="${reqlist.status == 0}">
-                    <form action="limitedseemore" method="post">
+                    <form action="limitedshowmore" method="post">
                     <button type="submit" class="btn btn-primary btn-block">vis mere</button>
                     <input type="hidden" name="reqid" value="${reqlist.id}"/>
                 </form>
@@ -122,7 +122,7 @@
                                 </c:if>
 
 
-                                <c:if test="${reqlist.price != 0}">
+                                <c:if test="${reqlist.price != 0 && reqlist.status != 1}">
                                     Afvent kundesvar.
                                     <br>
                                     afgivet tilbud ${reqlist.price} kr

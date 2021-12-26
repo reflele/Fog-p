@@ -23,6 +23,45 @@ public class CalculateBom {
 //        MaterialFacade materialFacade = new MaterialFacade(database);
     }
 
+    public double carportPrice(int reqId) throws UserException {
+
+        double price;
+        Calculate calculateBom = new Calculate(database);
+        RequestFacade requestFacade = new RequestFacade(database);
+
+        List<Request> requestList = requestFacade.getAllRequests();
+
+        int i = 0;
+        while (true) {
+            if (requestList.get(i).getId() == reqId) {
+                price = requestList.get(i).getPrice();
+                break;
+            }
+            i++;
+        }
+        return price;
+    }
+
+    public String carportDescription(int reqId) throws UserException {
+
+        String description;
+        RequestFacade requestFacade = new RequestFacade(database);
+
+        List<Request> requestList = requestFacade.getAllRequests();
+
+        int i = 0;
+        while (true) {
+            if (requestList.get(i).getId() == reqId) {
+                description = requestList.get(i).getDescription();
+                break;
+            }
+            i++;
+        }
+        return description;
+    }
+
+
+
     public double bomPrice(int reqId) throws UserException {
 
         double reqPurchasePrise = 0;

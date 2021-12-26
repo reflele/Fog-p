@@ -17,39 +17,6 @@ public class UserMapper
         this.database = database;
     }
 
-//    public List<Material> getUserId() throws UserException {
-//        List<Material> materialList = null;
-//        try (Connection connection = database.connect()) {
-//            String sql = "SELECT * FROM `users` WHERE `id`=?";
-//
-//            try (PreparedStatement ps = connection.prepareStatement(sql)) {
-//                ps.setString(1, category);
-//                ResultSet rs = ps.executeQuery();
-//                while (rs.next()) {
-//                    if (materialList == null) {
-//                        materialList = new ArrayList<>();
-//                    }
-//                    int material_id = rs.getInt("material_id");
-//                    String description = rs.getString("description");
-//                    //                  String categoryDB = rs.getString("category");
-//                    int length = rs.getInt("length");
-//                    int height = rs.getInt("height");
-//                    int width = rs.getInt("width");
-//                    double price = rs.getDouble("price");
-//                    String unit = rs.getString("unit");
-//                    Material material = new Material(material_id, description, category, length, height, width, price, unit);
-//                    materialList.add(material);
-//
-//                }
-//            } catch (SQLException ex) {
-//                throw new UserException(ex.getMessage());
-//            }
-//        } catch (SQLException ex) {
-//            throw new UserException(ex.getMessage());
-//        }
-//        return materialList;
-//    } ASD as
-
     public User login(String email, String password) throws UserException
     {
         try (Connection connection = database.connect())
@@ -87,13 +54,18 @@ public class UserMapper
     {
         try (Connection connection = database.connect())
         {
-            String sql = "INSERT INTO users (email, password, role) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO users (email, password, role, address, zipcode, phone_number, first_name, last_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
             {
                 ps.setString(1, user.getEmail());
                 ps.setString(2, user.getPassword());
                 ps.setString(3, user.getRole());
+                ps.setString(4, user.getAddress());
+                ps.setString(5, user.getZipcode());
+                ps.setString(6, user.getPhoneNumber());
+                ps.setString(7, user.getFirstName());
+                ps.setString(8, user.getLastName());
                 ps.executeUpdate();
                 ResultSet ids = ps.getGeneratedKeys();
                 ids.next();

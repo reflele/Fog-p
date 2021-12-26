@@ -12,6 +12,7 @@ public class Request {
     String roofType;
     Timestamp dateTime;
     double price;
+    String description;
 
     public double getPrice() {
         return price;
@@ -21,7 +22,7 @@ public class Request {
         this.price = price;
     }
 
-    public Request(int id, int user_id, int length, int width, String roofType, Timestamp dateTime, int height, int status, double price) {
+    public Request(int id, int user_id, int length, int width, String roofType, Timestamp dateTime, int height, int status, double price, String description) {
         this.id = id;
         this.user_id = user_id;
         this.length = length;
@@ -31,6 +32,15 @@ public class Request {
         this.dateTime = dateTime;
         this.height = height;
         this.price = price;
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getStatus() {
@@ -99,10 +109,11 @@ public class Request {
         this.user_id = user_id;
     }
 
-    public Request(int id, int length, int width, String roofType) {
+    public Request(int id, int length, int width, String roofType, String description) {
         this.user_id = id;
         this.length = length;
         this.width = width;
         this.roofType = roofType;
+        this.description = description;
     }
 }

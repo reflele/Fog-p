@@ -124,24 +124,37 @@
                                         ${roofs.name}
                                 </option></c:forEach>
                         </select>
-                        <br><br/>
+                        <br>
 
 
-                        <div id="skurvalg">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="skur" id="skur" value="skur">
-                                <label class="form-check-label" for="skur">
-                                    Skur
-                                </label>
+<%--                        <div id="skurvalg">--%>
+<%--                            <div class="form-check form-check-inline">--%>
+<%--                                <input class="form-check-input" type="radio" name="skur" id="skur" value="skur">--%>
+<%--                                <label class="form-check-label" for="skur">--%>
+<%--                                    Skur--%>
+<%--                                </label>--%>
+<%--                            </div>--%>
+<%--                            <div class="form-check form-check-inline">--%>
+<%--                                <input class="form-check-input" type="radio" name="skur" id="intet skur"--%>
+<%--                                       value="intet skur">--%>
+<%--                                <label class="form-check-label" for="intet skur">--%>
+<%--                                    Intet skur--%>
+<%--                                </label>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+
+
+
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Angiv evt specielle ønsker</label>
+                                <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="skur" id="intet skur"
-                                       value="intet skur">
-                                <label class="form-check-label" for="intet skur">
-                                    Intet skur
-                                </label>
-                            </div>
-                                <%--                           <script>--%>
+
+
+
+
+
+                    <%--                           <script>--%>
                                 <%--                           </script>--%>
                                 <%--                                //                                 function loadDoc() {--%>
                                 <%--                                //                                      document.getElementById("skurvalg").innerHTML = <h1>asdasdasdas</h1>;--%>
@@ -172,7 +185,6 @@
                                 <%--                                                        </script>--%>
 
 
-                        </div>
 
 
                         <div class="col-3 mb-3"></div>
