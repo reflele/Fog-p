@@ -71,7 +71,8 @@ public class DrawSVG {
         double postCount = (longSide / raftersDistance);
 
         //viewbox
-        SVG svg = new SVG(0, 0, "0 0 800 600", 100, 50);
+        SVG svg = new SVG(0, 0, "0 0 780 600", 100, 100);
+
 
         //carport omrids
         svg.addRect(0, 0, shortSide, longSide);
@@ -106,6 +107,13 @@ public class DrawSVG {
                 break;
             }
         }
+
+        //y-akse
+        svg.addLine(0, 0, 0, shortSide);
+       // x-akse
+        svg.addLine(0, carportLength, carportWidth, carportLength);
+
+
         return svg;
 
     }

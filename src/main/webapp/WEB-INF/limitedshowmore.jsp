@@ -16,7 +16,7 @@
 <%--            <div class="col-md-4"></div>--%>
 
 <%--<div class="col-md-4">--%>
-    <h1 class="text-center">Kundens begrænsede "se mere" side</h1>
+    <h1 class="text-center">Min bestilling dimensioner, svg, ønsker</h1>
         <h4>
 kundeønske:
         </h4>
@@ -24,17 +24,14 @@ kundeønske:
         ${sessionScope.description}
 <%--        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at erat nec libero malesuada efficitur nec nec diam. Nulla leo urna, porttitor quis varius quis, volutpat eget ex. Nullam nibh arcu, tristique eget molestie sed, dapibus in dui. In fermentum velit dolor, ut iaculis augue mollis in. Aenean id nisi risus. In dui erat, tempus nec augue vitae, dapibus vulputate nisl. Maecenas libero turpis, semper in purus id, fringilla tristique leo.--%>
     </h6>
-
-        <h4>
-            dimensioner kan tilføjes herunder.
-        </h4>
-        <br><br><br><br><br><br><br><br><br><br>
-
-
+        ${requestScope.svgdrawing}
 <%--        <h3 class="text-center">--%>
 <%--            "accepter og betal" knap. evt en "afvis" knap--%>
 <%--        </h3>--%>
         <h1>
+            dimensioner: ${sessionScope.request.length}
+            <br>
+            dimensioner: ${sessionScope.request.width}
         </h1>
 <%--        <c:if test="${sessionScope.}"--%>
         <c:if test="${sessionScope.price != 0}">

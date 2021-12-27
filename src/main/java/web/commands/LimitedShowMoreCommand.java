@@ -1,8 +1,10 @@
 package web.commands;
 
+import business.entities.SVG;
 import business.exceptions.UserException;
 import business.services.RequestFacade;
 import model.CalculateBom;
+import model.DrawSVG;
 import model.Request;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,6 +34,7 @@ public class LimitedShowMoreCommand extends Command {
         price = calculateBom.carportPrice(reqId);
 
         String description = calculateBom.carportDescription(reqId);
+        Request request1 = requestFacade.getRequestByRequestId(reqId);
 
        try {
            reqId = Integer.parseInt(request.getParameter("reqid"));
@@ -40,8 +43,12 @@ public class LimitedShowMoreCommand extends Command {
 //           System.out.println("reqid eller price er nok null");
        }
 
-//        int userId = (int) session.getAttribute("userId");
-//        String role = (String) session.getAttribute("role");
+        DrawSVG drawSVG = new DrawSVG(database);
+
+        SVG carport =  drawSVG.draw(reqId);
+
+
+        request.setAttribute("svgdrawing", carport.toString());
 
 
         List<Request> requestsList = new ArrayList<>();
@@ -50,6 +57,7 @@ public class LimitedShowMoreCommand extends Command {
         request.getSession().setAttribute("reqid", reqId);
         request.getSession().setAttribute("requestsList", requestsList);
         request.getSession().setAttribute("description", description);
+        request.getSession().setAttribute("request", request1);
 
         return "limitedshowmore";
     }
