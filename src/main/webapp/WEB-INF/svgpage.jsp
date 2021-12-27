@@ -8,7 +8,7 @@
 <t:genericpage>
 
     <jsp:attribute name="header">
-         Home
+         SVG
     </jsp:attribute>
 
     <jsp:attribute name="footer">

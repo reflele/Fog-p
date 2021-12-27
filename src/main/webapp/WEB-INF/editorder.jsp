@@ -4,7 +4,7 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Demo Page for Employee Roles
+        Ordreredigeringsside
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
@@ -29,6 +29,13 @@
                     <h2 class="text-center">Angiv salgspris</h2>
                     <h6>Du er ved at angive en salgspris for ordrenummer ${sessionScope.reqid}.</h6>
                     <br>
+                    <h6>
+                    Kundeønske:
+                    </h6>
+                    ${sessionScope.description}
+
+                    <br><br>
+
                     <h6>Indkøbsprisen for styklisten til denne carport er: ${sessionScope.purchasePrice} kr.</h6>
 
                     <h6>Anbefalet salgspris: </h6>

@@ -4,6 +4,7 @@ import business.entities.User;
 import business.persistence.Database;
 import business.persistence.UserMapper;
 import business.exceptions.UserException;
+import model.Request;
 
 public class UserFacade
 {
@@ -25,5 +26,7 @@ public class UserFacade
         userMapper.createUser(user);
         return user;
     }
-
+//    public User getUserByUserId (int Id) throws UserException{
+//        return Usermapper.getUserByUserId(Id);
+//    }
 }

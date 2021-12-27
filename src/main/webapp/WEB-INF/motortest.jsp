@@ -6,7 +6,7 @@
 <t:genericpage>
 
     <jsp:attribute name="header">
-         Home
+
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -15,48 +15,50 @@
 
     <jsp:body>
 
-        <div class="row">
-            <div class="col-md-4"></div>
+        <h1 class="text-center">Tak for din forespørgsel!</h1>
 
-        <div class="col-md-4">
-            <h2 class="text-center">Carport designside</h2>
-            <h2 class="text-center">Motortest siger:</h2>
+<%--        <div class="row">--%>
+<%--            <div class="col-md-4"></div>--%>
 
-            <h1 class="text-center"> valgte parametre </h1>
-                <h4>længde: ${sessionScope.length}</h4>
-                <h4>bredde: ${sessionScope.width}</h4>
-                <h4>type: ${sessionScope.roof} tag</h4>
-            <br><br/>
+<%--        <div class="col-md-4">--%>
+<%--            <h2 class="text-center">Carport designside</h2>--%>
+<%--            <h2 class="text-center">Motortest siger:</h2>--%>
 
-            <h3>overfladeareal
-            <br>
-                ${sessionScope.surface}
+<%--            <h1 class="text-center"> valgte parametre </h1>--%>
+<%--                <h4>længde: ${sessionScope.length}</h4>--%>
+<%--                <h4>bredde: ${sessionScope.width}</h4>--%>
+<%--                <h4>type: ${sessionScope.roof} tag</h4>--%>
+<%--            <br><br/>--%>
 
-            </h3>
+<%--            <h3>overfladeareal--%>
+<%--            <br>--%>
+<%--                ${sessionScope.surface}--%>
 
-            <br>
-            <h3>antal stolper</h3>
-            <h4>${sessionScope.woodenPostCount}</h4>
+<%--            </h3>--%>
 
-            <br>
-            <h3>Rem længde</h3>
-            <h4>${sessionScope.beamsLength} cm</h4>
+<%--            <br>--%>
+<%--            <h3>antal stolper</h3>--%>
+<%--            <h4>${sessionScope.woodenPostCount}</h4>--%>
 
-            <br>
-            <h3>spærlængde</h3>
-            <h4>${sessionScope.raftersLength} cm</h4>
+<%--            <br>--%>
+<%--            <h3>Rem længde</h3>--%>
+<%--            <h4>${sessionScope.beamsLength} cm</h4>--%>
 
-            <br>
-            <h3>roofing</h3>
-            <h4>${sessionScope.amountOfSheets} sheets</h4>
+<%--            <br>--%>
+<%--            <h3>spærlængde</h3>--%>
+<%--            <h4>${sessionScope.raftersLength} cm</h4>--%>
 
-
-            <h1>Antal xxx</h1>
-
-                    <div class="col-md-4"></div>
+<%--            <br>--%>
+<%--            <h3>roofing</h3>--%>
+<%--            <h4>${sessionScope.amountOfSheets} sheets</h4>--%>
 
 
-            <br>
+<%--            <h1>Antal xxx</h1>--%>
+
+<%--                    <div class="col-md-4"></div>--%>
+
+
+<%--            <br>--%>
 
             <p><a href="orderpage">Send en forespørgsel mere</a>
             </p>

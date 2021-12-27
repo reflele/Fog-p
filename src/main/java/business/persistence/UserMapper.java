@@ -3,6 +3,7 @@ package business.persistence;
 import business.entities.Material;
 import business.exceptions.UserException;
 import business.entities.User;
+import model.Request;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class UserMapper
     {
         try (Connection connection = database.connect())
         {
-            String sql = "SELECT id, role FROM users WHERE email=? AND password=?";
+            String sql = "SELECT id, role, first_name, last_name, phone_number FROM users WHERE email=? AND password=?";
 
             try (PreparedStatement ps = connection.prepareStatement(sql))
             {
@@ -32,7 +33,10 @@ public class UserMapper
                 {
                     String role = rs.getString("role");
                     int id = rs.getInt("id");
-                    User user = new User(email, password, role);
+                    String firstName = rs.getString("first_name");
+                    String lastName = rs.getString("last_name");
+                    String phoneNumber = rs.getString("phone_number");
+                    User user = new User(email, password, role,firstName,lastName,phoneNumber);
                     user.setId(id);
                     return user;
                 } else
@@ -82,5 +86,34 @@ public class UserMapper
             throw new UserException(ex.getMessage());
         }
     }
+
+//    public User getUserByUserId(int Id) throws UserException {
+//        User user = null;
+//        try (Connection connection = database.connect()) {
+//            String sql = "SELECT * FROM `users` WHERE `id`=?";
+//
+//            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+//                ps.setInt(1, Id);
+//                ResultSet rs = ps.executeQuery();
+//                while (rs.next()) {
+//                    int requestId = rs.getInt("request_id");
+//                    int user_id = rs.getInt("user_id");
+//                    int length = rs.getInt("length");
+//                    int height = rs.getInt("height");
+//                    int width = rs.getInt("width");
+//                    String roofType = rs.getString("roofType");
+//                    Timestamp dateTime = rs.getTimestamp("date_time");
+//                    int status = rs.getInt("order_status");
+//                    double price = rs.getDouble("price");
+//                    String description = rs.getString("description");
+//                    request = new Request(requestId, user_id, length, width, roofType, dateTime, height, status, price, description);
+//                }
+//            }
+//        } catch (SQLException ex) {
+//            throw new UserException(ex.getMessage());
+//        }
+//        return user;
+//    }
+
 
 }

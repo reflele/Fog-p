@@ -15,10 +15,13 @@ public class User
         this.lastName = lastName;
     }
 
-    public User(String email, String password, String role) {
+    public User(String email, String password, String role, String firstName, String lastName, String phoneNumber) {
         this.email = email;
         this.password = password;
         this.role = role;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
     }
 
     private int id; // just used to demo retrieval of autogen keys in UserMapper

@@ -44,6 +44,9 @@ public class RegisterCommand extends CommandUnprotectedPage
             session.setAttribute("user", user);
             session.setAttribute("role", user.getRole());
             session.setAttribute("userId", user.getId());
+            session.setAttribute("firstname", user.getFirstName());
+            session.setAttribute("lastname", user.getLastName());
+            session.setAttribute("phonenumber", user.getPhoneNumber());
             return user.getRole() + "page";
         }
         else

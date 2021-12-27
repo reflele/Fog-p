@@ -26,6 +26,10 @@ public class MaterialFacade {
         return materialMapper.getMaterialByCategory(category);
     }
 
+    public Material getMaterialById(int materialId) throws UserException {
+        return materialMapper.getMaterialById(materialId);
+    }
+
     public double getPriceById(int materialId) throws UserException {
         return materialMapper.getPriceById(materialId);
     }

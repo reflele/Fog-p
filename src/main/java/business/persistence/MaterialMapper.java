@@ -102,4 +102,36 @@ public class MaterialMapper {
         return materialPrice;
     }
 
+
+
+
+    public Material getMaterialById(int id) throws UserException {
+        Material material = null;
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT * FROM `material` WHERE `material_id`=?";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, id);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int material_id = rs.getInt("material_id");
+                    String description = rs.getString("description");
+                    String category = rs.getString("category");
+                    int length = rs.getInt("length");
+                    int height = rs.getInt("height");
+                    int width = rs.getInt("width");
+                    double price = rs.getDouble("price");
+                    String unit = rs.getString("unit");
+                    material = new Material(material_id, description, category, length, height, width, price, unit);
+
+                }
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            throw new UserException(ex.getMessage());
+        }
+        return material;
+    }
+
 }

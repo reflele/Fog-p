@@ -4,7 +4,7 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Demo Page for Customer Roles
+         Se mere siden
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
@@ -31,9 +31,9 @@ kundeønske:
         <br><br><br><br><br><br><br><br><br><br>
 
 
-        <h3 class="text-center">
-            "accepter og betal" knap. evt en "afvis" knap
-        </h3>
+<%--        <h3 class="text-center">--%>
+<%--            "accepter og betal" knap. evt en "afvis" knap--%>
+<%--        </h3>--%>
         <h1>
         </h1>
 <%--        <c:if test="${sessionScope.}"--%>

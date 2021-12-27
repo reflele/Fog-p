@@ -167,4 +167,32 @@ public class RequestMapper
 
 
     }
+
+    public Request getRequestByRequestId(int reqId) throws UserException {
+        Request request = null;
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT * FROM `carport_request` WHERE `request_id`=?";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, reqId);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int requestId = rs.getInt("request_id");
+                    int user_id = rs.getInt("user_id");
+                    int length = rs.getInt("length");
+                    int height = rs.getInt("height");
+                    int width = rs.getInt("width");
+                    String roofType = rs.getString("roofType");
+                    Timestamp dateTime = rs.getTimestamp("date_time");
+                    int status = rs.getInt("order_status");
+                    double price = rs.getDouble("price");
+                    String description = rs.getString("description");
+                    request = new Request(requestId, user_id, length, width, roofType, dateTime, height, status, price, description);
+                }
+            }
+        } catch (SQLException ex) {
+            throw new UserException(ex.getMessage());
+        }
+        return request;
+    }
 }

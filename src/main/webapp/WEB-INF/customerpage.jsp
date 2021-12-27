@@ -4,7 +4,7 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Demo Page for Customer Roles
+         Velkommen til din kundeside
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
@@ -27,9 +27,7 @@
 </div>
         <div class="col-md-4"></div>
         </div>
-        <h1>Hello ${sessionScope.email} </h1>
-        You are now logged in as a Customer of our wonderful site.
-        Role: ${sessionScope.role}
+
     </jsp:body>
 
 </t:genericpage>

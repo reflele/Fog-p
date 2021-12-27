@@ -25,6 +25,11 @@ public List<Request> getRequestById (int id) throws UserException{
     return requestMapper.getRequestById(id);
 }
 
+    public Request getRequestByRequestId (int reqId) throws UserException{
+        return requestMapper.getRequestByRequestId(reqId);
+    }
+
+
     public void addPrice (int requestId, double price) throws UserException{
         requestMapper.addPrice(requestId, price);
     }

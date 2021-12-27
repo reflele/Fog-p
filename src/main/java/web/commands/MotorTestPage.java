@@ -58,6 +58,7 @@ public class MotorTestPage extends Command {
 
         requestFacade.createRequest((int) session.getAttribute("userId"), (int) carPortLength, (int) carPortWidth, roofType, description);
 
+        int n = (int) session.getAttribute("userId");
 
         surfaceAreaSides = (carPortLength * carPortHeight + carPortWidth * carPortHeight + shortSide * carPortHeight);
 

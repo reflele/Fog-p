@@ -27,7 +27,6 @@
 <t:genericpage>
 
     <jsp:attribute name="header">
-         Home
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -40,12 +39,13 @@
 
         <div style="margin-top: 3em;margin-bottom: 3em;">
 
+        <div class="container">
         <div class="row">
         <div class="col-md-4"></div>
 
         <div class="col-md-4">
 
-        <div class="container">
+
 
         <%--        <img src="images/olskercupcakes.png" class="img-fluid mb-4"/>--%>
 

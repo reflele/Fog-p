@@ -24,7 +24,7 @@
 <t:genericpage>
 
     <jsp:attribute name="header">
-         Home
+        Tilføj ny ordre
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -43,13 +43,9 @@
 
 
                 <div class="row">
-                    <div class="col-3 mb-3"></div>
+                    <div class="col-md-4"></div>
 
-                    <div class="col-3">
-
-                        <div class="container mb-3">
-
-
+                    <div class="col-md-4">
                             <a>Vælg længde</a>
                             <select class="form-select" aria-label="Default select example"  name="length">
                                 <c:forEach var="lengths" items="${applicationScope.lengths}">
@@ -59,16 +55,16 @@
                             </select>
 
                             </select>
-                            <br>
-                            <a>Vælg højde</a>
+<%--                            <br>--%>
+<%--                            <a>Vælg højde</a>--%>
 
-                            <select class="form-select" aria-label="Default select example"  name="height" >
-                                <option selected>Dont open this select menu</option>
-                                <c:forEach var="heights" items="${applicationScope.heights}">
-                                    <option value=${heights.dimension} class="dropdown-item">
-                                            ${heights.dimension}
-                                    </option></c:forEach>
-                            </select>
+<%--                            <select class="form-select" aria-label="Default select example"  name="height" >--%>
+<%--                                <option selected>Dont open this select menu</option>--%>
+<%--                                <c:forEach var="heights" items="${applicationScope.heights}">--%>
+<%--                                    <option value=${heights.dimension} class="dropdown-item">--%>
+<%--                                            ${heights.dimension}--%>
+<%--                                    </option></c:forEach>--%>
+<%--                            </select>--%>
                             <br>
                             <a>Vælg bredde</a>
                             <select class="form-select" aria-label="Default select example" name="width">
@@ -77,53 +73,59 @@
                                             ${widths.dimension}
                                     </option></c:forEach>
                             </select>
-                            <br>
-                            <a>Vælg Trætype</a>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Dont open this select menu</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                            <br>
-                            <a>Vælg Beklædning</a>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Dont open this select menu</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
+                        <br>
+<%--                            <br>--%>
+<%--                            <a>Vælg Trætype</a>--%>
+<%--                            <select class="form-select" aria-label="Default select example">--%>
+<%--                                <option selected>Dont open this select menu</option>--%>
+<%--                                <option value="1">One</option>--%>
+<%--                                <option value="2">Two</option>--%>
+<%--                                <option value="3">Three</option>--%>
+<%--                            </select>--%>
+<%--                            <br>--%>
+<%--                            <a>Vælg Beklædning</a>--%>
+<%--                            <select class="form-select" aria-label="Default select example">--%>
+<%--                                <option selected>Dont open this select menu</option>--%>
+<%--                                <option value="1">One</option>--%>
+<%--                                <option value="2">Two</option>--%>
+<%--                                <option value="3">Three</option>--%>
+<%--                            </select>--%>
 
-
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Angiv evt specielle ønsker</label>
+                            <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Skriv gerne også om du ønsker at blive ringet op af sælger"></textarea>
                         </div>
+
+<br>
+
                     </div>
-                    <div class="col-3 mb-3">
+                    <div class="col-md-4">
 
-                        <a>Vælg antal sider</a>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Dont open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
+<%--                        <a>Vælg antal sider</a>--%>
+<%--                        <select class="form-select" aria-label="Default select example">--%>
+<%--                            <option selected>Dont open this select menu</option>--%>
+<%--                            <option value="1">One</option>--%>
+<%--                            <option value="2">Two</option>--%>
+<%--                            <option value="3">Three</option>--%>
+<%--                        </select>--%>
 
-                        <br>
-                        <a>Vælg lakering</a>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Dont open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
+<%--                        <br>--%>
+<%--                        <a>Vælg lakering</a>--%>
+<%--                        <select class="form-select" aria-label="Default select example">--%>
+<%--                            <option selected>Dont open this select menu</option>--%>
+<%--                            <option value="1">One</option>--%>
+<%--                            <option value="2">Two</option>--%>
+<%--                            <option value="3">Three</option>--%>
+<%--                        </select>--%>
 
-                        <br>
-                        <a>Vælg tagtype</a>
-                        <select class="form-select" aria-label="Default select example" name="roof">
-                            <c:forEach var="roofs" items="${applicationScope.rooftypes}">
-                                <option value=${roofs.name} class="dropdown-item">
-                                        ${roofs.name}
-                                </option></c:forEach>
-                        </select>
+<%--                        <br>--%>
+<%--                        <a>Vælg tagtype</a>--%>
+<%--                        <select class="form-select" aria-label="Default select example" name="roof">--%>
+<%--                            <c:forEach var="roofs" items="${applicationScope.rooftypes}">--%>
+<%--                                <option value=${roofs.name} class="dropdown-item">--%>
+<%--                                        ${roofs.name}--%>
+<%--                                </option></c:forEach>--%>
+<%--                        </select>--%>
                         <br>
 
 
@@ -145,10 +147,7 @@
 
 
 
-                            <div class="form-group">
-                                <label for="exampleFormControlTextarea1">Angiv evt specielle ønsker</label>
-                                <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                            </div>
+
 
 
 

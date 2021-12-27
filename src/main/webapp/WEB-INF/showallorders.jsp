@@ -24,14 +24,14 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Demo Page for Customer Roles
+         Alle ordrer
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
     <jsp:body>
         <div class="container">
 
-        <table class="table">
+        <table class="table table-hover">
             <thead>
             <tr>
                 <th scope="col">Forespørgsel_id</th>
@@ -40,7 +40,9 @@
                 <th scope="col">Højde</th>
                 <th scope="col">Dato for oprettelse</th>
                 <th scope="col">Status</th>
+                <c:if test="${sessionScope.user.role == 'customer'}">
                 <th scope="col">Ordre</th>
+                </c:if>
             </tr>
             <tbody>
             <tr>
@@ -112,9 +114,6 @@
 
 
                                 <c:if test="${reqlist.price == 0}">
-
-
-<%--                                <form action="editorder?target=redirect&destination=showallorders" method="post">--%>
                                     <form action="editorder" method="post">
                                         <button type="submit" class="btn btn-primary btn-block">Opret tilbud</button>
                                         <input type="hidden" name="reqid" value="${reqlist.id}"/>
@@ -126,10 +125,10 @@
                                     Afvent kundesvar.
                                     <br>
                                     afgivet tilbud ${reqlist.price} kr
-                                    <form action="editorder" method="post" id="change">
+                                    <form action="editorder" method="post">
+                                        <button type="submit"><a>ændr</a></button>
                                         <input type="hidden" name="reqid" value="${reqlist.id}"/>
                                     </form>
-                                    <button type="submit" form="change"><a>ændr</a></button>
                                 </c:if>
 
                             </td>
@@ -141,7 +140,9 @@
 <%--                                </form>--%>
 <%--                            </td>--%>
                         </tr>
+
                     </c:forEach>
+
                 </c:if>
             </c:if>
 

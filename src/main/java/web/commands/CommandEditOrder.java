@@ -25,16 +25,18 @@ public class CommandEditOrder extends Command
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
 
+
         CalculateBom calculateBom = new CalculateBom(database);
 
         double purchasePrice;
         double salesPrice;
 
         int reqId = Integer.parseInt(request.getParameter("reqid"));
-
         purchasePrice = calculateBom.bomPrice(reqId);
+        String description = calculateBom.carportDescription(reqId);
         salesPrice = 1.5 * purchasePrice;
 
+        request.getSession().setAttribute("description", description);
         request.getSession().setAttribute("reqid", reqId);
         request.getSession().setAttribute("purchasePrice", purchasePrice);
         request.getSession().setAttribute("salesPrice", salesPrice);

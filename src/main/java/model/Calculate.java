@@ -213,8 +213,6 @@ public class Calculate {
     }
 
     public void screws(double carPortLength, double carPortWidth) {
-
-
         double areal = carPortLength * carPortWidth;
 
         int count;
@@ -227,7 +225,7 @@ public class Calculate {
 
         BomMaterial bomMaterial = new BomMaterial(999, count);
         bomMaterials.add(bomMaterial);
-        return;
+
     }
 
 
