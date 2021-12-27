@@ -23,7 +23,7 @@ public class DrawSVG {
 
         List<Request> requestList = requestFacade.getAllRequests();
         Calculate calculate;
-        int raftersDistance = 50;
+
         int shortSide;
         int longSide;
         int carportLength;
@@ -48,7 +48,10 @@ public class DrawSVG {
 
 
         double rafterWidth = 4.5;
-        double raftersCount = longSide / raftersDistance;
+
+        double raftersCount = 10;
+        int raftersDistance = (int) (longSide/(raftersCount-1));
+
 
         int rafterX = 0;
         int rafterY = 0;
@@ -73,20 +76,25 @@ public class DrawSVG {
         //carport omrids
         svg.addRect(0, 0, shortSide, longSide);
 
+
+        //beams
+        svg.addRect(beamX, upperBeamPostY, beamWidth, longSide);
+        svg.addRect(beamX, lowerBeamPostY, beamWidth, longSide);
+
         //rafter
         for (int i = 0; i < raftersCount; i++) {
             svg.addRect(rafterX, rafterY, shortSide, rafterWidth);
             rafterX = rafterX + raftersDistance;
         }
 
-        //beams
-        svg.addRect(beamX, upperBeamPostY, beamWidth, longSide);
-        svg.addRect(beamX, lowerBeamPostY, beamWidth, longSide);
 
         //posts row 1
         for (int i = 0; i < postCount; i++) {
             svg.addRect(postX, upperBeamPostY, postHeight, postWidth);
             postX = postX + (raftersDistance * 3);
+            if (postX > longSide){
+                break;
+            }
         }
 
         postX = raftersDistance;
@@ -94,6 +102,9 @@ public class DrawSVG {
         for (int i = 0; i < postCount; i++) {
             svg.addRect(postX, lowerBeamPostY, postHeight, postWidth);
             postX = postX + (raftersDistance * 3);
+            if (postX > longSide){
+                break;
+            }
         }
         return svg;
 

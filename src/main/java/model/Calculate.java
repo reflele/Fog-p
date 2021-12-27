@@ -75,7 +75,7 @@ public class Calculate {
 
         }
 
-        raftersCount = (longSide / raftersDistance);
+        raftersCount = (longSide / raftersDistance) + 1;
         //vi skal enten +1 eller -1 baseret på om der skal være rafters på ydersiderne
 
         //raftersCount skal rundes op og castes som int
@@ -227,6 +227,30 @@ public class Calculate {
         bomMaterials.add(bomMaterial);
 
     }
+
+
+    public void beslag(double carPortLength, double carPortWidth) {
+
+        Double areal = carPortLength * carPortWidth;
+        int count;
+
+        if (areal <= 100000){
+            count = 2;
+        } else if (areal <= 200000){
+            count = 4;
+        } else if (areal <= 300000){
+            count = 6;
+        }else if (areal <= 400000){
+            count = 8;
+        }else {
+            count = 10;
+        }
+
+        BomMaterial bomMaterial = new BomMaterial(888, count);
+        bomMaterials.add(bomMaterial);
+
+    }
+
 
 
 

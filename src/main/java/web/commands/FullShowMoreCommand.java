@@ -38,84 +38,39 @@ public class FullShowMoreCommand extends Command {
         ArrayList<Material> materialList = new ArrayList<>();
 
 
-
-
-
         reqId = Integer.parseInt(request.getParameter("reqid"));
+
+
         description = calculateBom.carportDescription(reqId);
         double purchasePrice = calculateBom.bomPrice(reqId);
 
         bomMaterials = calculateBom.bomList(reqId);
 
         for (int i = 0; i < bomMaterials.size(); i++) {
-           Material material = materialFacade.getMaterialById(bomMaterials.get(i).getMaterialId());
-//            System.out.println("category");
-//           System.out.println(material.getCategory());
-//            System.out.println("getMaterial_id");
-//            System.out.println(material.getMaterial_id());
-//            System.out.println("getLength");
-//            System.out.println(material.getLength());
-//            System.out.println("getPrice");
-//            System.out.println(material.getPrice());
-//            System.out.println("getUnit");
-//            System.out.println(material.getUnit());
-//            System.out.println("getHeight");
-//            System.out.println(material.getHeight());
-//            System.out.println("getDescription");
-//            System.out.println(material.getDescription());
-//            System.out.println("getWidth");
-//            System.out.println(material.getWidth());
+            Material material = materialFacade.getMaterialById(bomMaterials.get(i).getMaterialId());
 
-           materialList.add(material);
+
+            materialList.add(material);
+
+
+            Request carportRequest = requestFacade.getRequestByRequestId(reqId);
+
+
+            DrawSVG drawSVG = new DrawSVG(database);
+
+            SVG carport = drawSVG.draw(reqId);
+
+
+            request.setAttribute("svgdrawing", carport.toString().replace(",", "."));
+            request.getSession().setAttribute("carportrequest", carportRequest);
+            request.getSession().setAttribute("bommaterials", bomMaterials);
+            request.getSession().setAttribute("materiallist", materialList);
+            request.getSession().setAttribute("description", description);
+            request.getSession().setAttribute("reqid", reqId);
+
 
         }
-//        System.out.println(bomMaterials.size());
-        Request carportRequest = requestFacade.getRequestByRequestId(reqId);
-
-        int n = (int) session.getAttribute("userId");
-
-        String firstName = (String) session.getAttribute("firstname");
-
-        System.out.println("firstname");
-        System.out.println(firstName);
-
-        String firstName2 = (String) session.getAttribute("firstName");
-
-        System.out.println("firstname");
-        System.out.println(firstName2);
-
-        DrawSVG drawSVG = new DrawSVG(database);
-
-        SVG carport =  drawSVG.draw(reqId);
-
-
-        request.setAttribute("svgdrawing", carport.toString().replace(",","."));
-        request.getSession().setAttribute("firstname", firstName);
-        request.getSession().setAttribute("carportrequest", carportRequest);
-        request.getSession().setAttribute("bommaterials", bomMaterials);
-        request.getSession().setAttribute("materiallist", materialList);
-        request.getSession().setAttribute("description", description);
-        request.getSession().setAttribute("reqid", reqId);
-
-
-
-//       try {
-//           reqId = Integer.parseInt(request.getParameter("reqid"));
-//           price = Double.parseDouble(request.getParameter("price"));
-//       } catch (Exception e){
-////           System.out.println("reqid eller price er nok null");
-//       }
-//        List<Request> requestsList = new ArrayList<>();
-
-
-//        request.getSession().setAttribute("requestsList", requestsList);
-
-
-
-
-
-
-
         return "fullshowmore";
     }
+
 }

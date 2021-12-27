@@ -40,7 +40,7 @@
                             <%--                    <th scope="col">First</th>--%>
                             <%--                    <th scope="col">Last</th>--%>
                             <%--                    <th scope="col">Handle</th>--%>
-                            <%--                </tr>--%>
+                            <%--               </tr>--%>
                         </thead>
                         <tbody>
                         <tr>
@@ -139,12 +139,13 @@
             </thead>
             <tbody>
 
-            <c:forEach var="m" items="${sessionScope.materiallist}" varStatus="status ">
+            <c:forEach var="m" items="${sessionScope.materiallist}" varStatus="status">
                 <td>${m.category}</td>
                 <td>${m.height}x${m.width}mm ${m.description}</td>
                 <td>${m.length} cm</td>
+                <td>${sessionScope.bommaterials.get(0).count}</td>
 <%--                <td>${sessionScope.bommaterials.toString()}</td>--%>
-                <td>Count</td>
+
                 <td>${m.unit}</td>
 
             </tr>
