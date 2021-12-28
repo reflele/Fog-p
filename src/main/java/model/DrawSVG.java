@@ -69,9 +69,11 @@ public class DrawSVG {
         double postWidth = 6;
         double postHeight = 6;
         double postCount = (longSide / raftersDistance);
+        int postEndX = (int) (longSide - postWidth);
 
         //viewbox
-        SVG svg = new SVG(0, 0, "0 0 800 600", 100, 50);
+        SVG svg = new SVG(0, 0, "0 0 780 600", 100, 100);
+
 
         //carport omrids
         svg.addRect(0, 0, shortSide, longSide);
@@ -96,6 +98,7 @@ public class DrawSVG {
                 break;
             }
         }
+        svg.addRect(postEndX, upperBeamPostY, postHeight, postWidth);
 
         postX = raftersDistance;
         //posts row 2
@@ -106,6 +109,13 @@ public class DrawSVG {
                 break;
             }
         }
+        svg.addRect(postEndX, lowerBeamPostY, postHeight, postWidth);
+        //y-akse
+        svg.addLine(0, 0, 0, shortSide);
+       // x-akse
+        svg.addLine(0, carportLength, carportWidth, carportLength);
+
+
         return svg;
 
     }
