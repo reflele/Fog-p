@@ -44,11 +44,11 @@ public class CommandAllOrders extends Command {
             requestsList = requestFacade.getAllRequests();
         }
 
-
+        request.getSession().setAttribute("requestsList", requestsList);
         request.getSession().setAttribute("reqid", reqId);
         request.getSession().setAttribute("userid", userId);
         request.getSession().setAttribute("role", role);
-        request.getSession().setAttribute("requestsList", requestsList);
+
 
 
 

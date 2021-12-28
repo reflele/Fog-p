@@ -13,11 +13,14 @@
 
         <div class="row">
 
-        <%--            <div class="col-md-4"></div>--%>
+        <h1 class="text-center">Min bestilling ordre #${sessionScope.reqid}</h1>
+        <c:if test="${sessionScope.price == 0}">
+        <h3 class="text-center">afvent tilbud fra sælger</h3>
+        </c:if>
+        <c:if test="${sessionScope.price != 0}">
+            <h3 class="text-center">Rul ned for at besvare tilbuddet</h3>
+        </c:if>
 
-        <%--<div class="col-md-4">--%>
-        <h1 class="text-center">Min bestilling odrer #${sessionScope.reqid}</h1>
-        <h3 class="text-center">afventer svar fra sælger</h3>
         <h4>
             kundeønske
         </h4>

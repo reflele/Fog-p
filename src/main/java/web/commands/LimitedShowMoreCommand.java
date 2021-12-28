@@ -48,7 +48,7 @@ public class LimitedShowMoreCommand extends Command {
         SVG carport =  drawSVG.draw(reqId);
 
 
-        request.setAttribute("svgdrawing", carport.toString());
+        request.setAttribute("svgdrawing", carport.toString().replace(",","."));
 
 
         List<Request> requestsList = new ArrayList<>();

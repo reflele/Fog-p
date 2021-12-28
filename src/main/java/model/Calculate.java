@@ -5,7 +5,11 @@ import business.exceptions.UserException;
 import business.persistence.Database;
 import business.services.MaterialFacade;
 
+import javax.jws.soap.SOAPBinding;
+import javax.xml.crypto.Data;
 import java.util.*;
+
+import static web.FrontController.database;
 
 public class Calculate {
 
@@ -20,11 +24,14 @@ public class Calculate {
         materialFacade = new MaterialFacade(database);
 //        MaterialFacade materialFacade = new MaterialFacade(database);
     }
+    public Calculate(){
+        materialFacade = new MaterialFacade(database);
+    }
 
 
     static double minLengthWidth = 450; //if carport length < minLength. No extra posts are added.
-    double postsDistance = 210; //if side is longer than minLength, extra posts will be added to the construction for every postsDistance cm.
-    double raftersDistance = 52;
+    static double postsDistance = 210; //if side is longer than minLength, extra posts will be added to the construction for every postsDistance cm.
+    static double raftersDistance = 52;
 
     public double getPostsDistance() {
         return postsDistance;
@@ -42,6 +49,9 @@ public class Calculate {
 
         return list;
     }
+
+//    public static int getRaftersCount(double carportLength, double carportWidth) throws UserException{
+//}
 
     public double rafters(double carPortLength, double carportWidth) throws UserException {
 
@@ -87,7 +97,7 @@ public class Calculate {
         bomMaterials.add(bomMaterial);
 
 
-        return raftersLength;
+        return raftersCount;
     }
 
 
@@ -111,6 +121,7 @@ public class Calculate {
             longSide = carPortWidth;
         }
 
+        
 
         for (int i = 0; i < beamsList.size(); i++) {
             if (beamsList.get(i).getLength() > longSide) {
@@ -158,24 +169,38 @@ public class Calculate {
         //getDimensionsFromReqId(reqId);
 
         int postId = 777; //hardcoded del. en post med denne postId skal sættes i db.
-        double postsCount = 4;
+        double postsCount = 0;
 
-        carPortLength = carPortLength*0.8;
+        double longSide;
+        double shortSide;
 
-        if (carPortWidth >= minLengthWidth) {
-            double extraWidth = carPortWidth - minLengthWidth;
-            for (double i = 0; i < extraWidth; i = i + postsDistance) {
-                postsCount = postsCount + 2;
-            }
+        if (carPortLength > carPortWidth) {
+            longSide = carPortLength;
+        } else {
+            longSide = carPortWidth;
         }
 
-        if (carPortLength >= minLengthWidth) {
-            double extraLength = carPortLength - minLengthWidth;
-            for (double i = 0; i < extraLength; i = i + postsDistance) {
-                postsCount = postsCount + 2;
-            }
+        for (int i = 0; i < longSide-raftersDistance; i = (int) (i+raftersDistance*3)) {
+            postsCount = postsCount +2;
         }
-        //add to a list
+
+
+//        carPortLength = carPortLength*0.8;
+
+//        if (carPortWidth >= minLengthWidth) {
+//            double extraWidth = carPortWidth - minLengthWidth;
+//            for (double i = 0; i < extraWidth; i = i + postsDistance) {
+//                postsCount = postsCount + 2;
+//            }
+//        }
+//
+//        if (carPortLength >= minLengthWidth) {
+//            double extraLength = carPortLength - minLengthWidth;
+//            for (double i = 0; i < extraLength; i = i + postsDistance) {
+//                postsCount = postsCount + 2;
+//            }
+//        }
+//        //add to a list
 
         BomMaterial bomMaterial = new BomMaterial(postId, (int) postsCount);
 

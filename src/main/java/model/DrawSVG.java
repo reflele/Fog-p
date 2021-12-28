@@ -9,6 +9,8 @@ import model.Calculate;
 
 import java.util.List;
 
+import static model.Calculate.raftersDistance;
+
 public class DrawSVG {
 
     RequestFacade requestFacade;
@@ -22,7 +24,8 @@ public class DrawSVG {
 
 
         List<Request> requestList = requestFacade.getAllRequests();
-        Calculate calculate;
+        Calculate calculate = new Calculate();
+
 
         int shortSide;
         int longSide;
@@ -49,7 +52,9 @@ public class DrawSVG {
 
         double rafterWidth = 4.5;
 
-        double raftersCount = 10;
+
+        int raft = (int) raftersDistance; //this number is the approximate distance between rafters. The actual number is "int raftersDistance"
+        double raftersCount =  (longSide / raft) + 1;
         int raftersDistance = (int) (longSide/(raftersCount-1));
 
 
@@ -68,12 +73,21 @@ public class DrawSVG {
         double beamWidth = 4.5;
         double postWidth = 6;
         double postHeight = 6;
-        double postCount = (longSide / raftersDistance);
-        int postEndX = (int) (longSide - postWidth);
+        double postCount = calculate.posts(carportLength,carportWidth);
+//        int postEndX = (int) (longSide - postWidth);
 
         //viewbox
-        SVG svg = new SVG(0, 0, "0 0 780 600", 100, 100);
+        int viewBoxL = longSide;
+        int viewBoxS = shortSide;
 
+        String l = String.valueOf(viewBoxL + 250);
+        String s = String.valueOf(viewBoxS + 15);
+        String viewBoxSize = "0 0 " + l + " " + s;
+
+        System.out.println(viewBoxSize);
+        SVG svg = new SVG(0, 0, viewBoxSize, 100, 100);
+
+//        SVG svg = new SVG(0, 0, "0 0 "+longSide+100+" "+shortSide+100, 100, 100);
 
         //carport omrids
         svg.addRect(0, 0, shortSide, longSide);
@@ -98,7 +112,7 @@ public class DrawSVG {
                 break;
             }
         }
-        svg.addRect(postEndX, upperBeamPostY, postHeight, postWidth);
+//        svg.addRect(postEndX, upperBeamPostY, postHeight, postWidth);
 
         postX = raftersDistance;
         //posts row 2
@@ -109,7 +123,7 @@ public class DrawSVG {
                 break;
             }
         }
-        svg.addRect(postEndX, lowerBeamPostY, postHeight, postWidth);
+//        svg.addRect(postEndX, lowerBeamPostY, postHeight, postWidth);
         //y-akse
         svg.addLine(0, 0, 0, shortSide);
        // x-akse
