@@ -143,7 +143,8 @@
                 <td>${m.category}</td>
                 <td>${m.height}x${m.width}mm ${m.description}</td>
                 <td>${m.length} cm</td>
-                <td>${sessionScope.bommaterials.get(0).count}</td>
+                <td>${sessionScope.bommaterials.get(status.index).count}</td>
+<%--                <td>${status}</td>--%>
 <%--                <td>${sessionScope.bommaterials.toString()}</td>--%>
 
                 <td>${m.unit}</td>
