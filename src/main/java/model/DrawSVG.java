@@ -70,7 +70,6 @@ public class DrawSVG {
         int upperBeamPostY = (int) (shortSide * 0.12);
         int lowerBeamPostY = (int) (shortSide * 0.88);
 
-        int beamSplitX = (longSide/2);
         double beamWidth = 4.5;
         double postWidth = 6;
         double postHeight = 6;
@@ -97,11 +96,10 @@ public class DrawSVG {
         //beams
         //2 upper
         svg.addRect(beamX, upperBeamPostY, beamWidth, longSide);
-        svg.addLine(beamSplitX, (int) (upperBeamPostY),beamSplitX, (int) (upperBeamPostY+ beamWidth));
 
         //2 lower
         svg.addRect(beamX, lowerBeamPostY, beamWidth, longSide);
-        svg.addLine(beamSplitX, (int) (lowerBeamPostY),beamSplitX, (int) (lowerBeamPostY+ beamWidth));
+
 
 
         //rafter
@@ -114,23 +112,12 @@ public class DrawSVG {
         //posts row 1
         for (int i = 0; i < postCount; i++) {
             svg.addRect(postX, upperBeamPostY, postHeight, postWidth);
-            postX = postX + (raftersDistance * 3);
-            if (postX > longSide){
-                break;
-            }
-        }
-//        svg.addRect(postEndX, upperBeamPostY, postHeight, postWidth);
-
-        postX = raftersDistance;
-        //posts row 2
-        for (int i = 0; i < postCount; i++) {
             svg.addRect(postX, lowerBeamPostY, postHeight, postWidth);
             postX = postX + (raftersDistance * 3);
             if (postX > longSide){
                 break;
             }
         }
-//        svg.addRect(postEndX, lowerBeamPostY, postHeight, postWidth);
         //y-akse
         svg.addLine(0, 0, 0, shortSide);
        // x-akse

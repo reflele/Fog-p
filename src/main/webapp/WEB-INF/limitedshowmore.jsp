@@ -22,21 +22,23 @@
         </c:if>
 
         <h4>
-            kundeønske
+            Kundeønske
         </h4>
-        <input class="form-control-plaintext" type="text" placeholder=${sessionScope.description}ingen_yderligere_ønsker>
+        <input class="form-control-plaintext" type="text" placeholder=${sessionScope.description} ingen_yderligere_ønsker>
         <h4>
-            dimensioner
+            Dimensioner
         </h4>
-
+        <h9><small><strong> Du har valgt en carport med følgende dimensioner:</strong></small></h9>
+        <br> <br/>
+        <br>
         <h6>
-            carport længde
+            Carport længde
         </h6>
-        <input class="form-control-plaintext" type="text" placeholder=${sessionScope.request.length} >
+        <input class="form-control-plaintext" type="text" placeholder= ${sessionScope.request.length} >
         <h6>
-            carport bredde
+            Carport bredde
         </h6>
-        <input class="form-control-plaintext" type="text" placeholder=${sessionScope.request.width}
+        <input class="form-control-plaintext" type="text" placeholder=  ${sessionScope.request.width}
         >
         <br>
 
