@@ -23,7 +23,8 @@ public class ShowSvgCommand extends CommandUnprotectedPage {
 
         DrawSVG drawSVG = new DrawSVG(database);
 
-        SVG carport =  drawSVG.draw(63);
+        SVG carport =  drawSVG.draw(65);
+
         SVG carport2 =  drawSVG.draw(69);
 
         request.setAttribute("svgdrawing", carport.toString().replace(",","."));
