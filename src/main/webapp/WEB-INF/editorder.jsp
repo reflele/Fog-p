@@ -34,7 +34,18 @@
                     </h6>
                     ${sessionScope.description}
 
+                    <br>
+                    <h6>
+                        Carport længde:
+                    </h6>
+                    ${sessionScope.request.length} cm
+                    <br>
+                    <h6>
+                        Carport bredde:
+                    </h6>
+                        ${sessionScope.request.width} cm
                     <br><br>
+
 
                     <h6>Indkøbsprisen for styklisten til denne carport er: ${sessionScope.purchasePrice} kr.</h6>
 

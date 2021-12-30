@@ -32,7 +32,7 @@ public class Redirect extends Command {
                 double price = Double.parseDouble(request.getParameter("price"));
                 requestFacade.addPrice(reqId, price);
 
-                CommandAllOrders commandAllOrders = new CommandAllOrders("showallorders");
+                CommandAllOrders commandAllOrders = new CommandAllOrders(destination);
                 commandAllOrders.execute(request, response);
             }
         } catch (Exception e) {

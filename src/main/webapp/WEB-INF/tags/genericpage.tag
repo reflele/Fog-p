@@ -37,10 +37,10 @@
 <%--            <a class="p-2 text-dark" href="<%=request.getContextPath()%>">Home</a>--%>
 
         <c:if test="${sessionScope.role == 'customer'}">
-        <a class="p-2 text-dark" href="customerpage">Home</a>
+        <a class="p-2 text-dark" href="customerpage">Forside</a>
         </c:if>
         <c:if test="${sessionScope.role == 'employee'}">
-            <a class="p-2 text-dark" href="employeepage">Home</a>
+            <a class="p-2 text-dark" href="employeepage">Forside</a>
         </c:if>
 <%--        <a class="p-2 text-dark" href="#">Profile</a>--%>
 <%--        <a class="p-2 text-dark" href="#">About</a>--%>

@@ -58,11 +58,16 @@
 <%--                    <div class="col-md-4"></div>--%>
 
 
-<%--            <br>--%>
-
-            <p><a href="orderpage">Send en forespørgsel mere</a>
-            </p>
-
+            <br>
+        <div class="text-center">
+            <a href="orderpage">Send en forespørgsel</a> mere,
+             eller<c:if test="${sessionScope.role == 'customer'}">
+            <a href="customerpage">gå til forsiden</a>
+        </c:if>
+        <c:if test="${sessionScope.role == 'employee'}">
+            <a href="employeepage">gå til forsiden</a>
+        </c:if>
+        </div>
 
         </div>
 

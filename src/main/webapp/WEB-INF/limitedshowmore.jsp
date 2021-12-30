@@ -24,26 +24,30 @@
         <h4>
             Kundeønske
         </h4>
-        <input class="form-control-plaintext" type="text" placeholder=${sessionScope.description} ingen_yderligere_ønsker>
-        <h4>
-            Dimensioner
-        </h4>
-        <h9><small><strong> Du har valgt en carport med følgende dimensioner:</strong></small></h9>
-        <br> <br/>
+        <h7>
+                ${sessionScope.request.description}
+        </h7>
+        <br><br><br><br/>
+        <h6><strong> Du har valgt en carport med følgende dimensioner:</strong></h6>
         <br>
         <h6>
             Carport længde
         </h6>
-        <input class="form-control-plaintext" type="text" placeholder= ${sessionScope.request.length} >
+        <h7>
+                ${sessionScope.request.length} cm
+        </h7>
+
         <h6>
             Carport bredde
         </h6>
-        <input class="form-control-plaintext" type="text" placeholder=  ${sessionScope.request.width}
-        >
+        <h7>
+                ${sessionScope.request.width} cm
+        </h7>
+
         <br>
 
         <%--        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at erat nec libero malesuada efficitur nec nec diam. Nulla leo urna, porttitor quis varius quis, volutpat eget ex. Nullam nibh arcu, tristique eget molestie sed, dapibus in dui. In fermentum velit dolor, ut iaculis augue mollis in. Aenean id nisi risus. In dui erat, tempus nec augue vitae, dapibus vulputate nisl. Maecenas libero turpis, semper in purus id, fringilla tristique leo.--%>
-        <h3 class="text-left">
+        <h3>
 Tegning af carport
         </h3>
         ${requestScope.svgdrawing}

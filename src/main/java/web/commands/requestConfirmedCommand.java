@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
-public class MotorTestPage extends Command {
+public class requestConfirmedCommand extends Command {
     public String pageToShow;
     public int userId;
     public String role;
 
-    public MotorTestPage(String pageToShow) {
+    public requestConfirmedCommand(String pageToShow) {
         this.userId = userId;
         this.role = role;
         this.pageToShow = pageToShow;
@@ -81,6 +81,6 @@ public class MotorTestPage extends Command {
         request.getSession().setAttribute("description", description);
 
 
-        return "motortest";
+        return "requestconfirmed";
     }
 }

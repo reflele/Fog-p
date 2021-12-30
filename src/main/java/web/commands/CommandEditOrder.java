@@ -1,8 +1,10 @@
 package web.commands;
 
 import business.exceptions.UserException;
+import business.services.RequestFacade;
 import model.Calculate;
 import model.CalculateBom;
+import model.Request;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,6 +29,7 @@ public class CommandEditOrder extends Command
 
 
         CalculateBom calculateBom = new CalculateBom(database);
+        RequestFacade requestFacade = new RequestFacade(database);
 
         double purchasePrice;
         double salesPrice = 0;
@@ -40,11 +43,13 @@ public class CommandEditOrder extends Command
             salesPrice = purchasePrice * 1.6;
         }
 
+        Request request1 = requestFacade.getRequestByRequestId(reqId);
 
         request.getSession().setAttribute("description", description);
         request.getSession().setAttribute("reqid", reqId);
-        request.getSession().setAttribute("purchasePrice", purchasePrice);
-        request.getSession().setAttribute("salesPrice", salesPrice);
+        request.getSession().setAttribute("purchasePrice",String.format("%.2f", purchasePrice));
+        request.getSession().setAttribute("salesPrice",String.format("%.2f", salesPrice));
+        request.getSession().setAttribute("request", request1);
 
         return pageToShow;
 

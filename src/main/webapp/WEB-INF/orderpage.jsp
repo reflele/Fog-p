@@ -39,7 +39,7 @@
         <div style="margin-top: 3em;margin-bottom: 3em;">
 
         <div>
-            <form action="motortest" method="post">
+            <form action="requestconfirmed" method="post">
 
 
                 <div class="row">
