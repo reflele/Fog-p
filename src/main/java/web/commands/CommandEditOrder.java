@@ -29,12 +29,17 @@ public class CommandEditOrder extends Command
         CalculateBom calculateBom = new CalculateBom(database);
 
         double purchasePrice;
-        double salesPrice;
+        double salesPrice = 0;
 
         int reqId = Integer.parseInt(request.getParameter("reqid"));
         purchasePrice = calculateBom.bomPrice(reqId);
         String description = calculateBom.carportDescription(reqId);
-        salesPrice = 1.5 * purchasePrice;
+        if (purchasePrice <= 3000){
+            salesPrice = purchasePrice * 1.4;
+        } else {
+            salesPrice = purchasePrice * 1.6;
+        }
+
 
         request.getSession().setAttribute("description", description);
         request.getSession().setAttribute("reqid", reqId);

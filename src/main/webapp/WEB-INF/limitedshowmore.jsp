@@ -43,9 +43,9 @@
         <br>
 
         <%--        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at erat nec libero malesuada efficitur nec nec diam. Nulla leo urna, porttitor quis varius quis, volutpat eget ex. Nullam nibh arcu, tristique eget molestie sed, dapibus in dui. In fermentum velit dolor, ut iaculis augue mollis in. Aenean id nisi risus. In dui erat, tempus nec augue vitae, dapibus vulputate nisl. Maecenas libero turpis, semper in purus id, fringilla tristique leo.--%>
-        <h1>
-
-        </h1>
+        <h3 class="text-left">
+Tegning af carport
+        </h3>
         ${requestScope.svgdrawing}
         <%--        <h3 class="text-center">--%>
         <%--            "accepter og betal" knap. evt en "afvis" knap--%>

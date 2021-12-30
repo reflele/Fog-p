@@ -141,8 +141,16 @@
 
             <c:forEach var="m" items="${sessionScope.materiallist}" varStatus="status">
                 <td>${m.category}</td>
-                <td>${m.height}x${m.width}mm ${m.description}</td>
-                <td>${m.length} cm</td>
+                <td><c:if test="${m.category != 'tagplade'}">${m.height}x${m.width}mm ${m.description}</c:if>
+                    <c:if test="${m.category == 'tagplade'}">${m.height}mm ${m.description}</c:if>
+                       </td>
+                <td>
+                    <c:if test="${m.length == 0 && m.category != 'tagplade'}">se beskr.</c:if>
+                    <c:if test="${m.length != 0 && m.category != 'tagplade'}">${m.length} cm</c:if>
+
+
+                    <c:if test="${m.category == 'tagplade'}">${m.width}x${m.length} cm</c:if>
+                </td>
                 <td>${sessionScope.bommaterials.get(status.index).count}</td>
 <%--                <td>${status}</td>--%>
 <%--                <td>${sessionScope.bommaterials.toString()}</td>--%>
@@ -161,10 +169,9 @@
 
         <br>
 
-        <h3>
-            SVG
+        <h3 class="text-left">
+            Tegning af carport
         </h3>
-
         ${requestScope.svgdrawing}
 
         <%--</div>--%>

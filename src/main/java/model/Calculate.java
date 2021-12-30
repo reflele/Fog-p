@@ -5,7 +5,6 @@ import business.exceptions.UserException;
 import business.persistence.Database;
 import business.services.MaterialFacade;
 
-import javax.jws.soap.SOAPBinding;
 import javax.xml.crypto.Data;
 import java.util.*;
 
@@ -70,14 +69,14 @@ public class Calculate {
         }
 
         List<Material> raftersList;
-        raftersList = CategoryList("rafter"); //gets rafters from db
+        raftersList = CategoryList("spær"); //gets rafters from db
 
 
         raftersList.sort(new SortByLength()); //sorted raftersList by length
 
 
         for (int i = 0; i < raftersList.size(); i++) {
-            if (raftersList.get(i).getLength() > shortSide) {
+            if (raftersList.get(i).getLength() >= shortSide) {
                 raftersLength = raftersList.get(i).getLength();
                 rafterId = raftersList.get(i).getMaterial_id();
                 break;
@@ -90,11 +89,13 @@ public class Calculate {
 
         //raftersCount skal rundes op og castes som int
 
-
         BomMaterial bomMaterial = new BomMaterial(rafterId, (int) raftersCount);
-
+        BomMaterial bomMaterial2 = new BomMaterial(997, (int) raftersCount);
+        BomMaterial bomMaterial3 = new BomMaterial(998, (int) raftersCount);
 
         bomMaterials.add(bomMaterial);
+        bomMaterials.add(bomMaterial2);
+        bomMaterials.add(bomMaterial3);
 
 
         return raftersCount;
@@ -108,7 +109,7 @@ public class Calculate {
         int beamId = 0;
 
         List<Material> beamsList;
-        beamsList = CategoryList("beam"); //gets beams from db
+        beamsList = CategoryList("rem"); //gets beams from db
 
 
         beamsList.sort(new SortByLength()); //sorted beamsList by length
@@ -225,56 +226,45 @@ public class Calculate {
         amountOfSheets = roofSheetSurface / (roofSheetlength * roofSheetWidth);
 
         BomMaterial bomMaterial = new BomMaterial(roofSheetId, (int) Math.ceil(amountOfSheets));
+        BomMaterial bomMaterial2 = new BomMaterial(996, (int) Math.ceil(amountOfSheets)/3);
 
         bomMaterials.add(bomMaterial);
-
-
+        bomMaterials.add(bomMaterial2);
         //runder altid op til nærmeste hele tal
         return Math.ceil(amountOfSheets);
 
-
-    }
-
-    public void screws(double carPortLength, double carPortWidth) {
-        double areal = carPortLength * carPortWidth;
-
-        int count;
-
-        if (areal <= 250000){
-            count = 1;
-        } else {
-             count = 2;
-        }
-
-        BomMaterial bomMaterial = new BomMaterial(999, count);
-        bomMaterials.add(bomMaterial);
-
     }
 
 
-    public void beslag(double carPortLength, double carPortWidth) {
+    public void fittings(double carPortLength, double carPortWidth) {
 
         Double areal = carPortLength * carPortWidth;
-        int count;
+        int fittingsCount;
+
 
         if (areal <= 100000){
-            count = 2;
+            fittingsCount = 12;
+
         } else if (areal <= 200000){
-            count = 4;
+            fittingsCount = 16;
         } else if (areal <= 300000){
-            count = 6;
+            fittingsCount = 20;
         }else if (areal <= 400000){
-            count = 8;
+            fittingsCount = 24;
         }else {
-            count = 10;
+            fittingsCount = 28;
         }
 
-        BomMaterial bomMaterial = new BomMaterial(888, count);
+        int fittingScrewsCount = fittingsCount/4;
+
+
+        BomMaterial bomMaterial = new BomMaterial(888, fittingsCount);
+        BomMaterial bomMaterial2 = new BomMaterial(999, fittingScrewsCount);
+
         bomMaterials.add(bomMaterial);
+        bomMaterials.add(bomMaterial2);
 
     }
-
-
 
 
     ArrayList<BomMaterial> bomMaterials = new ArrayList<>();

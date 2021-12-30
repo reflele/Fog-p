@@ -4,11 +4,7 @@ import business.exceptions.UserException;
 import business.persistence.Database;
 import business.services.MaterialFacade;
 import business.services.RequestFacade;
-import web.commands.Command;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,8 +83,8 @@ public class CalculateBom {
         calculate.beams(carPortLength, carPortWidth);
         calculate.rafters(carPortLength, carPortWidth);
         calculate.roofing(carPortLength, carPortWidth);
-        calculate.screws(carPortLength,carPortWidth);
-        calculate.beslag(carPortLength,carPortWidth);
+//        calculate.screws(carPortLength,carPortWidth);
+        calculate.fittings(carPortLength,carPortWidth);
 
         bomMaterials = calculate.getBomMaterials();
 
@@ -125,8 +121,8 @@ public class CalculateBom {
         calculateBom.beams(carPortLength, carPortWidth);
         calculateBom.rafters(carPortLength, carPortWidth);
         calculateBom.roofing(carPortLength, carPortWidth);
-        calculateBom.screws(carPortLength,carPortWidth);
-        calculateBom.beslag(carPortLength,carPortWidth);
+//        calculateBom.screws(carPortLength,carPortWidth);
+        calculateBom.fittings(carPortLength,carPortWidth);
 
         reqPurchasePrise = calculateBom.calcPrice(calculateBom.getBomMaterials());
 
