@@ -160,8 +160,6 @@ public class Calculate {
         //sorter efter længde (mindst til størst)
         //loop i gennem liste for at finde den mindste beam som er > longSide
         //tilføj til list som indeholder material_id og antal
-
-
     }
 
     public double posts(double carPortLength, double carPortWidth) {
