@@ -17,14 +17,18 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "FrontController", urlPatterns = {"/fc/*"})
 public class FrontController extends HttpServlet
 {
-    private final static String USER = "root";
-    private final static String PASSWORD = "root";
-    private final static String URL = "jdbc:mysql://localhost:3306/mydb?serverTimezone=CET";
+//    private static String USER = "root";
+//    private static String PASSWORD = "root";
+//    private static String URL = "jdbc:mysql://localhost:3306/mydb?serverTimezone=CET";
+    private static String USER;
+    private static String PASSWORD;
+    private static String URL = "jdbc:mysql://localhost:3306/mydb?serverTimezone=CET";
 
     public static Database database;
 
     public void init() throws ServletException
     {
+        setDBCredentials();
         // Initialize database connection
         if (database == null)
         {
@@ -106,5 +110,26 @@ public class FrontController extends HttpServlet
     {
         return "FrontController for application";
     }
+
+
+    public static void setDBCredentials() {
+        String deployed = System.getenv("DEPLOYED");
+
+        if (deployed != null){ //prod: henter variabler fra setenv.sh
+//            USER = System.getenv("JDBC_USER");
+            USER = System.getenv("JDBC_USER");
+            PASSWORD = System.getenv("JDBC_PASSWORD");
+            URL = System.getenv("JDBC_CONNECTION_STRING");
+        } else { //localhost
+            URL = "jdbc:mysql://localhost:3306/mydb?serverTimezone=CET&useSSL=false";
+            USER = "root";
+            PASSWORD = "root";
+        }
+
+
+
+    }
+
+
 
 }
