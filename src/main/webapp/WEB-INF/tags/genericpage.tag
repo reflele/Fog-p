@@ -31,7 +31,7 @@
     <nav class="my-2 my-md-0 me-md-3">
         <c:if test="${addHomeLink == null }">
             <c:if test="${sessionScope.role == null}">
-            <a class="p-2 text-dark" href="<%=request.getContextPath()%>">Home</a>
+            <a class="p-2 text-dark" href="<%=request.getContextPath()%>">Forside</a>
         </c:if>
         </c:if>
 <%--            <a class="p-2 text-dark" href="<%=request.getContextPath()%>">Home</a>--%>

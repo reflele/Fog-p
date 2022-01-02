@@ -92,7 +92,7 @@
 <%--                            </select>--%>
 
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Angiv evt specielle ønsker</label>
+                            <label for="exampleFormControlTextarea1">Bemærkninger</label>
                             <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Skriv gerne også om du ønsker at blive ringet op af sælger"></textarea>
                         </div>
 

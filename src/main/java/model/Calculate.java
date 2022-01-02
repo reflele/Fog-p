@@ -142,7 +142,6 @@ public class Calculate {
                     beamLength = beamsList.get(i).getLength();
                     beamId = beamsList.get(i).getMaterial_id();
                     beamRequiredCount = 4;
-
                     break;
 
                 }
@@ -219,18 +218,29 @@ public class Calculate {
         double carportRoofSurface = carPortLength * carPortWidth;
         double amountOfSheets = 0;
 
-        while (carportRoofSurface >= roofSheetSurface) {
-            roofSheetSurface++;
+//        while (carportRoofSurface >= roofSheetSurface) {
+//            roofSheetSurface++;
+//        }
+
+        amountOfSheets = (carPortLength * carPortWidth) / roofSheetSurface;
+
+
+
+
+
+        BomMaterial roofScrews = new BomMaterial(996, 1); //dette er for tagskruerne.
+        //antal tagskruer er min 1 pk. per carportrequest. nedenstående beregning runder ned til 0 hvis carporten er lille.
+        if ((int) Math.ceil(amountOfSheets) <= 2){
+            roofScrews = new BomMaterial(996, 1);
+        } else {
+            roofScrews = new BomMaterial(996, (int) Math.ceil(amountOfSheets)/3);
         }
 
-        amountOfSheets = roofSheetSurface / (roofSheetlength * roofSheetWidth);
+        BomMaterial roofSheets = new BomMaterial(roofSheetId, (int) Math.ceil(amountOfSheets));//runder altid op til nærmeste hele tal
 
-        BomMaterial bomMaterial = new BomMaterial(roofSheetId, (int) Math.ceil(amountOfSheets));
-        BomMaterial bomMaterial2 = new BomMaterial(996, (int) Math.ceil(amountOfSheets)/3);
 
-        bomMaterials.add(bomMaterial);
-        bomMaterials.add(bomMaterial2);
-        //runder altid op til nærmeste hele tal
+        bomMaterials.add(roofSheets);
+        bomMaterials.add(roofScrews);
         return Math.ceil(amountOfSheets);
 
     }

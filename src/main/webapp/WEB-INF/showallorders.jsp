@@ -64,7 +64,7 @@
                         Ordre gennemført.
                     </c:if>
                 <c:if test="${reqlist.price == 0}">
-                afvent svar fra sælger.
+                afventer svar fra sælger.
                 </c:if>
                 <c:if test="${reqlist.price != 0}">
                     <c:if test="${reqlist.status != 1}">
@@ -76,7 +76,7 @@
                 <td>
                     <c:if test="${reqlist.status == 1}">
                         <form action="fullshowmore" method="post">
-                            <button type="submit" class="btn btn-primary btn-block">vis stykliste osv</button>
+                            <button type="submit" class="btn btn-primary btn-block">Stykliste & ordrebek.</button>
                             <input type="hidden" name="reqid" value="${reqlist.id}"/>
                         </form>
                     </c:if>
@@ -122,7 +122,7 @@
 
 
                                 <c:if test="${reqlist.price != 0 && reqlist.status != 1}">
-                                    Afvent kundesvar.
+                                    Afventer kundesvar
                                     <br>
                                     afgivet tilbud ${reqlist.price} kr
                                     <form action="editorder" method="post">

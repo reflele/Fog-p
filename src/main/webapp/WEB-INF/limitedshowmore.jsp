@@ -15,12 +15,12 @@
 
         <h1 class="text-center">Min bestilling ordre #${sessionScope.reqid}</h1>
         <c:if test="${sessionScope.price == 0}">
-        <h3 class="text-center">afvent tilbud fra sælger</h3>
+        <h3 class="text-center">afventer tilbud fra sælger</h3>
         </c:if>
         <c:if test="${sessionScope.price != 0}">
             <h3 class="text-center">Rul ned for at besvare tilbuddet</h3>
         </c:if>
-
+<c:if test="${sessionScope.request.description != null}">
         <h4>
             Kundeønske
         </h4>
@@ -28,6 +28,7 @@
                 ${sessionScope.request.description}
         </h7>
         <br><br><br><br/>
+</c:if>
         <h6><strong> Du har valgt en carport med følgende dimensioner:</strong></h6>
         <br>
         <h6>
@@ -58,7 +59,7 @@ Tegning af carport
         <%--        <c:if test="${sessionScope.}"--%>
         <c:if test="${sessionScope.price != 0}">
             <form action="redirect" method="post">
-                <button type="submit" class="btn btn-primary btn-block">Accepter ordre</button>
+                <button type="submit" class="btn btn-primary btn-block">Accepter og betal for ordre</button>
                 <input type="hidden" name="reqid" value="${sessionScope.reqid}"/>
                 <input type="hidden" name="updatestatus" value="1"/>
                 <input type="hidden" name="destination" value="showallorders"/>

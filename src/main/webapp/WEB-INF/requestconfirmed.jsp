@@ -16,6 +16,7 @@
     <jsp:body>
 
         <h1 class="text-center">Tak for din forespørgsel!</h1>
+        <h4 class="text-center"> du vil snart modtage et tilbud fra en af vores dygtige eksperter</h4>
 
 <%--        <div class="row">--%>
 <%--            <div class="col-md-4"></div>--%>
