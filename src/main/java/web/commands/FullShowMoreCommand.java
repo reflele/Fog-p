@@ -1,9 +1,8 @@
 package web.commands;
 
 import business.entities.Material;
-import business.entities.SVG;
-import business.entities.User;
 import business.exceptions.UserException;
+import business.services.BomFacade;
 import business.services.MaterialFacade;
 import business.services.RequestFacade;
 import model.BomMaterial;
@@ -15,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
-import java.util.List;
 
 public class FullShowMoreCommand extends Command {
     public FullShowMoreCommand(String pageToShow) {
@@ -26,9 +24,10 @@ public class FullShowMoreCommand extends Command {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
 
 
+        CalculateBom calculateBom = new CalculateBom(database);
         RequestFacade requestFacade = new RequestFacade(database);
         MaterialFacade materialFacade = new MaterialFacade(database);
-        CalculateBom calculateBom = new CalculateBom(database);
+        BomFacade bomFacade = new BomFacade(database);
 
         HttpSession session = request.getSession();
         int reqId;
@@ -44,13 +43,20 @@ public class FullShowMoreCommand extends Command {
         description = calculateBom.carportDescription(reqId);
         double purchasePrice = calculateBom.bomPrice(reqId);
 
-        bomMaterials = calculateBom.bomList(reqId);
+
+        bomMaterials = bomFacade.getBom(reqId);
+
+        if (bomMaterials == null){
+            bomMaterials = calculateBom.bomList(reqId);
+        }
+
 
         for (int i = 0; i < bomMaterials.size(); i++) {
             Material material = materialFacade.getMaterialById(bomMaterials.get(i).getMaterialId());
 
-
             materialList.add(material);
+
+
 
 
             Request carportRequest = requestFacade.getRequestByRequestId(reqId);
@@ -58,10 +64,9 @@ public class FullShowMoreCommand extends Command {
 
             DrawSVG drawSVG = new DrawSVG(database);
 
-            SVG carport = drawSVG.draw(reqId);
+            String carport = drawSVG.fullSVG(reqId).toString().replace(",500000",".");
 
-
-            request.setAttribute("svgdrawing", carport.toString().replace(",", "."));
+            request.setAttribute("svgdrawing", carport.replace(",000000",""));
             request.getSession().setAttribute("carportrequest", carportRequest);
             request.getSession().setAttribute("bommaterials", bomMaterials);
             request.getSession().setAttribute("materiallist", materialList);

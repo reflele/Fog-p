@@ -23,14 +23,12 @@ public class ShowSvgCommand extends CommandUnprotectedPage {
 
         DrawSVG drawSVG = new DrawSVG(database);
 
-        SVG carport =  drawSVG.draw(65);
 
-        SVG carport2 =  drawSVG.draw(69);
-
-        request.setAttribute("svgdrawing", carport.toString().replace(",","."));
+        String carport = drawSVG.fullSVG(180).toString().replace(",500000",".");
+        request.setAttribute("svgdrawing", carport.replace(",000000",""));
         //ints ville virke
-        //doubles skaber problemer på certsain devices
-        //midlertidig løsning, ændrer alle kommaer lige
+        //doubles skaber problemer på certain devices
+        //midlertidig løsning, ændrer alle kommatallene
         return pageToShow;
 
     }

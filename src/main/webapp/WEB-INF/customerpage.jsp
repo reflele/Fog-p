@@ -17,19 +17,22 @@
 
                 <div class="col-md-4">
 
+                    <br>
+
                     <form action="orderpage" method="post">
-                        <button type="submit" class="btn btn-primary btn-lg btn-block">Tilføj ny ordre</button>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block custom">Tilføj ny ordre</button>
                     </form>
 
-                    <br><br/>
+                    <br>
 
                     <form action="showallorders" method="post">
-                        <button type="submit" class="btn btn-primary btn-lg btn-block">Se ordrer</button>
+                       <p><button type="submit" class="btn btn-primary btn-lg btn-block custom">Se ordrer</button></p>
                     </form>
 
                 </div>
                 <div class="col-md-4"></div>
             </div>
+
         </div>
 
     </jsp:body>

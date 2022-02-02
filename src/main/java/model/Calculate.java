@@ -101,15 +101,14 @@ public class Calculate {
         return raftersCount;
     }
 
-
     public double beams(double carPortLength, double carPortWidth) throws UserException {
 
         double beamLength = 0;
         int beamRequiredCount = 0;
         int beamId = 0;
 
-        List<Material> beamsList;
-        beamsList = CategoryList("rem"); //gets beams from db
+        List<Material> beamsList = CategoryList("rem");//gets beams from db
+
 
 
         beamsList.sort(new SortByLength()); //sorted beamsList by length
@@ -191,6 +190,7 @@ public class Calculate {
 //                postsCount = postsCount + 2;
 //            }
 //        }
+
 //
 //        if (carPortLength >= minLengthWidth) {
 //            double extraLength = carPortLength - minLengthWidth;
@@ -207,7 +207,6 @@ public class Calculate {
 
         return postsCount;
     }
-
 
     public double roofing(double carPortLength, double carPortWidth) {
 
@@ -245,7 +244,6 @@ public class Calculate {
 
     }
 
-
     public void fittings(double carPortLength, double carPortWidth) {
 
         Double areal = carPortLength * carPortWidth;
@@ -276,7 +274,6 @@ public class Calculate {
 
     }
 
-
     ArrayList<BomMaterial> bomMaterials = new ArrayList<>();
 
     public double calcPrice(ArrayList<BomMaterial> bomMaterials) throws UserException {
@@ -291,9 +288,8 @@ public class Calculate {
             materialsPrice = materialsPrice * bomMaterials.get(i).getCount();
 
             purchasePrice = purchasePrice + materialsPrice;
-
-
         }
+
         return purchasePrice;
     }
 

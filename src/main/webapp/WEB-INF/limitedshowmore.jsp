@@ -66,6 +66,10 @@ Tegning af carport
             </form>
         </c:if>
 
+        </div>
+
+        </div>
+
     </jsp:body>
 
 </t:genericpage>

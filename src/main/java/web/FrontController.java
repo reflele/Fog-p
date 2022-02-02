@@ -123,7 +123,7 @@ public class FrontController extends HttpServlet
             PASSWORD = System.getenv("JDBC_PASSWORD");
             URL = System.getenv("JDBC_CONNECTION_STRING");
         } else { //localhost
-            URL = "jdbc:mysql://localhost:3306/mydb?serverTimezone=CET&useSSL=false";
+            URL = "jdbc:mysql://localhost:3306/mydb?serverTimezone=CET&useSSL=false&allowPublicKeyRetrieval=true";
             USER = "root";
             PASSWORD = "root";
         }

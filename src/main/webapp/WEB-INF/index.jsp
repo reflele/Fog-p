@@ -46,61 +46,66 @@
         <div class="col-md-4">
 
 
+                <%--        <img src="images/olskercupcakes.png" class="img-fluid mb-4"/>--%>
 
-        <%--        <img src="images/olskercupcakes.png" class="img-fluid mb-4"/>--%>
+            <div>
+                <div>
 
-        <div>
-        <div>
+                    <form action="fc/orderpage" method="post">
 
-            <form action="fc/orderpage" method="post">
-
-                <div style="margin-top: 3em;margin-bottom: 3em;">
-                    <h4>log på for at starte med at designe og bestille din helt egen carport.</h4>
-
-                </div>
-
-                <div class="row">
-                    <div class="col-md-4"></div>
-
-                    <div class="col-md-4">
-
-                        <div class="container">
+                        <div style="margin-top: 3em;margin-bottom: 3em;">
+                            <h4>log på for at starte med at designe og bestille din helt egen carport.</h4>
 
                         </div>
-                    </div>
 
-                    <a type="button" class="btn btn-primary btn-lg"
-                       href="${pageContext.request.contextPath}/fc/loginpage">Log på</a>
+                        <div class="row">
+                            <div class="col-md-4"></div>
 
-                    <div class="col-md-4">
+                            <div class="col-md-4">
+
+                                <div class="container">
+
+                                </div>
+                            </div>
+
+                            <a type="button" class="btn btn-primary btn-lg"
+                               href="${pageContext.request.contextPath}/fc/loginpage">Log på</a>
+
+                            <div class="col-md-4">
+
+                                <br>
+                                <br/>
+                            </div>
+                        </div>
+
+
+                        Eller <a href="${pageContext.request.contextPath}/fc/registerpage">opret bruger</a>
+
+                        Eller <a href="${pageContext.request.contextPath}/fc/showsvg">test SVG</a>
 
                         <br>
-                        <br/>
-                    </div>
+                    </form>
                 </div>
+            </div>
+        </div>
 
+                    <c:if test="${sessionScope.role == 'employee' }">
+                    <p style="font-size: larger">This is what you can do,
+                        since your are logged in as an employee</p>
+                    <p><a href="fc/employeepage">Employee Page</a>
+                        </c:if>
 
-                Eller <a href="${pageContext.request.contextPath}/fc/registerpage">opret bruger</a>
+                        <c:if test="${sessionScope.role == 'customer' }">
+                    <p style="font-size: larger">This is what you can do, since your
+                        are logged in as a customer</p>
+                    <p><a href="fc/customerpage">Customer Page</a>
+                        </c:if>
 
-<%--                Eller <a href="${pageContext.request.contextPath}/fc/showsvg">test SVG</a>--%>
-
-                <br>
-            </form>
-
-
-            <c:if test="${sessionScope.role == 'employee' }">
-            <p style="font-size: larger">This is what you can do,
-                since your are logged in as an employee</p>
-            <p><a href="fc/employeepage">Employee Page</a>
-                </c:if>
-
-                <c:if test="${sessionScope.role == 'customer' }">
-            <p style="font-size: larger">This is what you can do, since your
-                are logged in as a customer</p>
-            <p><a href="fc/customerpage">Customer Page</a>
-                </c:if>
+                </div>
+            </div>
 
         </div>
+
 
     </jsp:body>
 </t:genericpage>

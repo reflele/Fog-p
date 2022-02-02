@@ -16,6 +16,40 @@
           integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/styles.css">
     <meta name="theme-color" content="#7952b3">
+   <style>
+       .custom{
+           width:300px !important;
+       }
+       .countwidth{
+           width:50px !important
+       }
+       .hide{
+            display: none;
+       }
+
+       .mobu {
+           color: blue;
+           text-decoration: underline;
+           padding: 0;
+           border: none;
+           background: none;
+       }
+
+       .stretch{
+           width: 100%;
+           /*min-height: 100%;*/
+       }
+
+       .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+           background-color: #22528c !important;
+       }
+
+
+
+   </style>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -78,10 +112,14 @@
 <!-- Footer -->
 <div class="container">
     <br>
-    <hr>
-    <br>
-    <jsp:invoke fragment="footer"/>
-</div>
+<%--    <hr>--%>
+    <br><br><br>
+<%--    <jsp:invoke fragment="footer"/>--%>
 
+</div>
+ <a href="https://www.johannesfog.dk/">
+     <img src="${pageContext.request.contextPath}/images/fog_sidefod.png" class="img-fluid mb-0 stretch"/>
+ </a>
 </body>
+
 </html>

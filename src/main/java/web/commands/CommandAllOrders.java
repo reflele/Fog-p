@@ -49,9 +49,6 @@ public class CommandAllOrders extends Command {
         request.getSession().setAttribute("userid", userId);
         request.getSession().setAttribute("role", role);
 
-
-
-
         return pageToShow;
     }
 

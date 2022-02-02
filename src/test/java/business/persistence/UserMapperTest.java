@@ -11,10 +11,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class UserMapperTest {
 
-    private final static String DATABASE = "fog_carport";  // Change this to your own database
-    private final static String TESTDATABASE = DATABASE + "_test";
-    private final static String USER = "dev";
-    private final static String PASSWORD = "ax2";
+    private final static String DATABASE = "mydb";  // Change this to your own database
+    private final static String TESTDATABASE = "test_" + DATABASE;
+    private final static String USER = "root";
+    private final static String PASSWORD = "root";
     private final static String URL = "jdbc:mysql://localhost:3306/" + TESTDATABASE + "?serverTimezone=CET&useSSL=false";
 
     private static Database database;
@@ -39,9 +39,9 @@ public class UserMapperTest {
                 stmt.execute("create table " + TESTDATABASE + ".users LIKE " + DATABASE + ".users;" );
                 stmt.execute(
                     "insert into users values " +
-                    "(1,'jens@somewhere.com','jensen','customer'), " +
-                    "(2,'ken@somewhere.com','kensen','customer'), " +
-                    "(3,'robin@somewhere.com','batman','employee')");
+                    "(1,'jens@somewhere.com','jensen','customer','Blomstervejen 22','2860','22568442','Hans','Andreawsen'), " +
+                    "(2,'ken@somewhere.com','kensen','customer','Blomstervejen 223','2850','22566563','Hands','Andreassen'), " +
+                    "(3,'robin@somewhere.com','batman','employee','Blomstervejen 23','2860','22566566','Hansa','Andrexasen')");
             } catch (SQLException ex) {
             System.out.println( "Could not open connection to database: " + ex.getMessage() );
         }
@@ -56,7 +56,7 @@ public class UserMapperTest {
     @Test
     public void testLogin01() throws UserException {
         // Can we log in
-        User user = userMapper.login( "jens@somewhere.com", "jensen" );
+        User user = userMapper.login( "jens@somewhere.com", "jensen");
         assertTrue( user != null );
     }
 
@@ -76,10 +76,20 @@ public class UserMapperTest {
     }
 
     @Test
+    public void testLogin04() throws UserException {
+        // Robin is supposed to be an employee
+        User user = userMapper.login( "robin@somewhere.com", "batman" );
+        assertEquals( "employee", user.getRole() );
+    }
+
+
+
+    @Test
     public void testCreateUser01() throws UserException {
         // Can we create a new user - Notice, if login fails, this will fail
         // but so would login01, so this is OK
-        User original = new User( "king@kong.com", "uhahvorhemmeligt", "konge","firstname","lastname","42424242");
+//        email, password, "customer", address, zipcode, phoneNumber, firstName, lastName
+        User original = new User( "king@kong.com", "uhahvorhemmeligt", "konge","address1","2860","42424242","firstkk","lastkk");
         userMapper.createUser( original );
         User retrieved = userMapper.login( "king@kong.com", "uhahvorhemmeligt" );
         assertEquals( "konge", retrieved.getRole() );

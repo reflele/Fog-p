@@ -21,11 +21,11 @@
                 <div class="row mb-3">
                     <label class="col-sm-1 col-form-label" for="email">Email</label>
                     <div class="col-sm-4">
-                        <input class="form-control" type="text" name="email" placeholder="someone@nowhere.com">
+                        <input class="form-control" type="text" name="email" placeholder="someone@somewhere.com">
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label class="col-sm-1 col-form-label" for="password">Password</label>
+                    <label class="col-sm-1 col-form-label" for="password">Kode</label>
                     <div class="col-sm-4">
                         <input class="form-control" type="password" name="password" placeholder="sesam">
                     </div>
@@ -39,11 +39,11 @@
                 <c:if test="${not empty param.msg}">
                     <p style="font-size: large">${param.msg}</p>
                 </c:if>
-                <button class="btn btn-primary" type="submit" value="Login">Sign in</button>
+                <button class="btn btn-primary" type="submit" value="Login">Log på</button>
             </form>
 
-
-
         </div>
+
+
     </jsp:body>
 </t:genericpage>

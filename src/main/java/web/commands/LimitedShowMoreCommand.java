@@ -45,13 +45,10 @@ public class LimitedShowMoreCommand extends Command {
 
         DrawSVG drawSVG = new DrawSVG(database);
 
-        SVG carport =  drawSVG.draw(reqId);
-
-
-        request.setAttribute("svgdrawing", carport.toString().replace(",","."));
-
-
         List<Request> requestsList = new ArrayList<>();
+
+        String carport = drawSVG.limitedSVG(reqId).toString().replace(",500000",".");
+        request.setAttribute("svgdrawing", carport.replace(",000000",""));
 
         request.getSession().setAttribute("price",price);
         request.getSession().setAttribute("reqid", reqId);
