@@ -26,9 +26,9 @@
 
                     <br/>
 
-                    <form action="orderpage" method="post">
-                        <button type="submit" class="btn btn-primary btn-lg btn-block custom">Tilføj ny ordre</button>
-                    </form>
+<%--                    <form action="orderpage" method="post">--%>
+<%--                        <button type="submit" class="btn btn-primary btn-lg btn-block custom">Tilføj ny ordre</button>--%>
+<%--                    </form>--%>
 
 
                 </div>

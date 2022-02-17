@@ -81,7 +81,7 @@
 
                         Eller <a href="${pageContext.request.contextPath}/fc/registerpage">opret bruger</a>
 
-                        Eller <a href="${pageContext.request.contextPath}/fc/showsvg">test SVG</a>
+<%--                        Eller <a href="${pageContext.request.contextPath}/fc/showsvg">test SVG</a>--%>
 
                         <br>
                     </form>
