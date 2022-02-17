@@ -5,4 +5,4 @@ This project is:
  
 - A client/server multipage application developed in Java, JSP, html, css, and bootstrap.
 - Built with Maven
-- Deployed on a Tomcat Webcontainer v. 8 or 9.
+- Deployed on a Tomcat Webcontainer.
