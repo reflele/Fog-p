@@ -1,6 +1,3 @@
-Customer go brr, employee go brrer
-
-
 This project is:
  
 - A client/server multipage application developed in Java, JSP, html, css, and bootstrap.
